@@ -1,16 +1,11 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { signIn, signOut } from "next-auth/react";
 import { Button } from "./ui";
+import { UpgradeProButton } from "./UpgradeProButton";
 
 export function UpgradeButton() {
-  const router = useRouter();
-  return (
-    <Button variant="blue" onClick={() => router.push("/pricing")}>
-      Ver planos e upgrade →
-    </Button>
-  );
+  return <UpgradeProButton label="Assinar Pro →" variant="blue" />;
 }
 
 export function LogoutButton({ label = "Logout" }: { label?: string }) {

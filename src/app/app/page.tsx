@@ -8,13 +8,18 @@ export default async function HomePage() {
   const session = await auth();
   const userId = session!.user!.id!;
 
-  const rows = await prisma.job.findMany({
-    where: { userId },
-    orderBy: { createdAt: "asc" },
-  });
+  const [rows, dbUser] = await Promise.all([
+    prisma.job.findMany({
+      where: { userId },
+      orderBy: { createdAt: "asc" },
+    }),
+    // Read the plan fresh from the DB rather than the JWT session — the session
+    // is only refreshed at login, so a webhook-driven upgrade wouldn't show up
+    // here until the user signed in again otherwise.
+    prisma.user.findUnique({ where: { id: userId }, select: { plan: true } }),
+  ]);
 
-  // @ts-expect-error plan from session callback
-  const isPro = (session!.user!.plan ?? "FREE") === "PRO";
+  const isPro = dbUser?.plan === "PRO";
 
   const jobs: Job[] = rows.map((r: (typeof rows)[number]) => ({
     id: r.id,

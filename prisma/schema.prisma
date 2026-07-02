@@ -24,6 +24,12 @@ model User {
   // Settings (from the design's toggles)
   weeklyDigest    Boolean @default(true)
   interviewEmails Boolean @default(false)
+
+  // AbacatePay billing (Pro subscription)
+  abacatepayCustomerId     String?   @unique
+  abacatepaySubscriptionId String?
+  subscriptionStatus       String?
+  planRenewsAt             DateTime?
 }
 
 model Account {
