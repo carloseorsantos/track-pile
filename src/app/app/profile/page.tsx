@@ -1,4 +1,5 @@
 import { auth } from "@/lib/auth";
+import { prisma } from "@/lib/prisma";
 import { color, font, shadow } from "@/lib/tokens";
 import { UpgradeButton } from "@/components/NavButtons";
 
@@ -11,8 +12,9 @@ function initialsOf(name?: string | null) {
 export default async function ProfilePage() {
   const session = await auth();
   const user = session!.user!;
-  // @ts-expect-error plan from session
-  const isPro = (user.plan ?? "FREE") === "PRO";
+  // Read the plan fresh from the DB rather than the JWT session — see app/page.tsx.
+  const dbUser = await prisma.user.findUnique({ where: { id: user.id! }, select: { plan: true } });
+  const isPro = dbUser?.plan === "PRO";
 
   const rowStyle = {
     display: "flex",

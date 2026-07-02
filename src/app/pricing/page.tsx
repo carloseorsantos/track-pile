@@ -1,5 +1,6 @@
 import { color, font, shadow } from "@/lib/tokens";
 import { PublicNav, LinkButton } from "@/components/PublicNav";
+import { UpgradeProButton } from "@/components/UpgradeProButton";
 
 function Plan({
   name,
@@ -16,7 +17,7 @@ function Plan({
   features: string[];
   featured?: boolean;
   cta: string;
-  ctaHref: string;
+  ctaHref?: string;
 }) {
   return (
     <div
@@ -57,9 +58,13 @@ function Plan({
           </li>
         ))}
       </ul>
-      <LinkButton href={ctaHref} variant={featured ? "blue" : "paper"}>
-        <span style={{ width: "100%", textAlign: "center" }}>{cta}</span>
-      </LinkButton>
+      {ctaHref ? (
+        <LinkButton href={ctaHref} variant={featured ? "blue" : "paper"}>
+          <span style={{ width: "100%", textAlign: "center" }}>{cta}</span>
+        </LinkButton>
+      ) : (
+        <UpgradeProButton label={cta} variant={featured ? "blue" : "paper"} full />
+      )}
     </div>
   );
 }
@@ -93,7 +98,6 @@ export default function PricingPage() {
             period="/mês"
             featured
             cta="Assinar Pro"
-            ctaHref="/login"
             features={[
               "Vagas ilimitadas",
               "Tabela + Kanban + Calendário",
@@ -103,7 +107,7 @@ export default function PricingPage() {
           />
         </div>
         <p style={{ textAlign: "center", marginTop: 32, fontFamily: font.mono, fontSize: 12, color: "#999" }}>
-          Pagamento via Stripe chega em breve — por enquanto todo mundo começa no plano grátis.
+          Pagamento processado com segurança pela AbacatePay via cartão de crédito.
         </p>
       </div>
     </div>
