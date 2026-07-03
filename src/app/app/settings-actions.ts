@@ -29,3 +29,19 @@ export async function saveSettings(input: {
   revalidatePath("/app/settings");
   return { ok: true as const };
 }
+
+export async function deleteAccount() {
+  const session = await auth();
+  if (!session?.user?.id) {
+    return { ok: false as const, error: "Sua sessão expirou. Faça login novamente." };
+  }
+
+  try {
+    await prisma.user.delete({ where: { id: session.user.id } });
+  } catch (err) {
+    console.error("deleteAccount failed", err);
+    return { ok: false as const, error: "Não foi possível excluir a conta. Tente novamente." };
+  }
+
+  return { ok: true as const };
+}
