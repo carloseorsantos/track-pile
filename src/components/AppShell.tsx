@@ -2,7 +2,7 @@
 
 import { CSSProperties, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { color, font, shadow } from "@/lib/tokens";
+import { color, shadow } from "@/lib/tokens";
 import { Logo } from "./ui";
 
 function initialsOf(name?: string | null) {
