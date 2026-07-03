@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useTransition, CSSProperties } from "react";
-import { color, font, shadow, JobStatus } from "@/lib/tokens";
+import { useMemo, useState, useTransition, CSSProperties } from "react";
+import { color, font, shadow, JobStatus, STATUS_ORDER } from "@/lib/tokens";
 import { Job } from "@/lib/types";
 import { formatDate, formatDateTime } from "@/lib/dates";
 import { formatSalaryDisplay } from "@/lib/currency";
@@ -33,6 +33,29 @@ export function HomeClient({
   const [editing, setEditing] = useState<Job | null>(null);
   const toast = useToast();
   const [isPending, startTransition] = useTransition();
+
+  const [search, setSearch] = useState("");
+  const [statusFilter, setStatusFilter] = useState<JobStatus | "Todos">("Todos");
+  const [sortBy, setSortBy] = useState<"appliedAt" | "nextDate">("appliedAt");
+  const [sortDir, setSortDir] = useState<"asc" | "desc">("desc");
+
+  const filteredJobs = useMemo(() => {
+    const q = search.trim().toLowerCase();
+    const filtered = jobs.filter((j) => {
+      const matchesSearch = !q || j.company.toLowerCase().includes(q) || j.role.toLowerCase().includes(q);
+      const matchesStatus = statusFilter === "Todos" || j.status === statusFilter;
+      return matchesSearch && matchesStatus;
+    });
+    const dir = sortDir === "asc" ? 1 : -1;
+    return [...filtered].sort((a, b) => {
+      const av = a[sortBy] ? new Date(a[sortBy] as Date).getTime() : null;
+      const bv = b[sortBy] ? new Date(b[sortBy] as Date).getTime() : null;
+      if (av === null && bv === null) return 0;
+      if (av === null) return 1;
+      if (bv === null) return -1;
+      return (av - bv) * dir;
+    });
+  }, [jobs, search, statusFilter, sortBy, sortDir]);
 
   const counter = isPro ? `${jobs.length} vagas` : `${jobs.length} de ${FREE_JOB_LIMIT}`;
 
@@ -132,6 +155,16 @@ export function HomeClient({
   };
   const togOn: CSSProperties = { ...togBase, background: color.ink, color: color.yellow };
   const togOff: CSSProperties = { ...togBase, background: color.paper, color: color.ink };
+
+  const controlInputStyle: CSSProperties = {
+    border: "3px solid #111",
+    background: color.paper,
+    padding: "9px 12px",
+    fontFamily: font.body,
+    fontSize: 13,
+    boxShadow: shadow.sm,
+    boxSizing: "border-box",
+  };
 
   // ---------- DETAIL VIEW ----------
   if (detail) {
@@ -246,6 +279,42 @@ export function HomeClient({
         <EmptyState onAdd={openNew} />
       ) : view === "table" ? (
         <>
+          <div className="tp-table-controls" style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 16 }}>
+            <input
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Buscar empresa ou cargo..."
+              style={{ ...controlInputStyle, flex: "1 1 220px" }}
+            />
+            <select
+              value={statusFilter}
+              onChange={(e) => setStatusFilter(e.target.value as JobStatus | "Todos")}
+              style={{ ...controlInputStyle, cursor: "pointer" }}
+            >
+              <option value="Todos">Todos os status</option>
+              {STATUS_ORDER.map((s) => (
+                <option key={s} value={s}>{s}</option>
+              ))}
+            </select>
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value as "appliedAt" | "nextDate")}
+              style={{ ...controlInputStyle, cursor: "pointer" }}
+            >
+              <option value="appliedAt">Ordenar por: Aplicado em</option>
+              <option value="nextDate">Ordenar por: Próxima data</option>
+            </select>
+            <button
+              type="button"
+              onClick={() => setSortDir((d) => (d === "asc" ? "desc" : "asc"))}
+              style={{ ...controlInputStyle, cursor: "pointer", fontFamily: font.mono, fontWeight: 500 }}
+            >
+              {sortDir === "asc" ? "↑ Crescente" : "↓ Decrescente"}
+            </button>
+          </div>
+          <div style={{ fontFamily: font.mono, fontWeight: 500, fontSize: 12, color: "#999", marginBottom: 10 }}>
+            {filteredJobs.length} de {jobs.length} vagas
+          </div>
           <div className="tp-table-wrap">
           <table style={{ width: "100%", borderCollapse: "collapse", border: "3px solid #111", background: color.paper }}>
             <thead>
@@ -272,7 +341,7 @@ export function HomeClient({
               </tr>
             </thead>
             <tbody>
-              {jobs.map((j) => (
+              {filteredJobs.map((j) => (
                 <tr key={j.id} style={{ cursor: "pointer" }} onClick={() => setDetail(j)}
                   onMouseEnter={(e) => (e.currentTarget.style.background = "#FBF3DD")}
                   onMouseLeave={(e) => (e.currentTarget.style.background = "")}
