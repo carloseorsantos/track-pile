@@ -149,7 +149,7 @@ export function Kanban({
 
   return (
     <DndContext sensors={sensors} onDragStart={handleStart} onDragEnd={handleEnd}>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 16, alignItems: "start" }}>
+      <div className="tp-kanban" style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 16, alignItems: "start" }}>
         {KANBAN_COLUMNS.map((c) => (
           <Column key={c.name} name={c.name} statuses={c.statuses} jobs={jobs} onOpen={onOpen} />
         ))}

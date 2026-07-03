@@ -134,7 +134,7 @@ export function JobModal({
         </div>
 
         <div style={{ padding: 22 }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+          <div className="tp-form2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
             <div style={{ gridColumn: "1 / -1" }}>
               <label style={labelStyle}>Empresa</label>
               <input value={form.company} onChange={(e) => set("company", e.target.value)} placeholder="Nimbus Tech" style={inputStyle} />

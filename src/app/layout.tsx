@@ -1,11 +1,17 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { color } from "@/lib/tokens";
 import { ToastProvider } from "@/components/Toast";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "TRACKPILE — Suas vagas numa tela só",
   description:
     "Organize sua busca de emprego em tabela, kanban e calendário. Chega de planilha bagunçada e aba perdida.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({

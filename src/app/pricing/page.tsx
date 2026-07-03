@@ -46,7 +46,7 @@ function Plan({
         </div>
       )}
       <h3 style={{ font: `700 22px ${font.display}`, margin: 0 }}>{name}</h3>
-      <div style={{ font: `700 40px ${font.display}`, margin: "14px 0 4px" }}>
+      <div className="tp-pricing-price" style={{ font: `700 40px ${font.display}`, margin: "14px 0 4px" }}>
         {price}
         <span style={{ fontSize: 14, fontWeight: 400, fontFamily: font.body }}>{period}</span>
       </div>
@@ -68,12 +68,12 @@ export default function PricingPage() {
   return (
     <div style={{ minHeight: "100vh" }}>
       <PublicNav />
-      <div style={{ maxWidth: 900, margin: "0 auto", padding: "70px 24px" }}>
+      <div className="tp-section" style={{ maxWidth: 900, margin: "0 auto", padding: "70px 24px" }}>
         <div style={{ textAlign: "center", marginBottom: 48 }}>
-          <h1 style={{ font: `700 38px ${font.display}`, margin: 0 }}>Planos simples, sem pegadinha.</h1>
+          <h1 className="tp-pricing-h1" style={{ font: `700 38px ${font.display}`, margin: 0 }}>Planos simples, sem pegadinha.</h1>
           <p style={{ color: "#444", marginTop: 10 }}>Comece de graça. Faça upgrade quando o processo esquentar.</p>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 28 }}>
+        <div className="tp-pricing" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 28 }}>
           <Plan
             name="Grátis"
             price="R$0"

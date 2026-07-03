@@ -1,0 +1,156 @@
+/**
+ * TRACKPILE — responsive overrides.
+ *
+ * All layout/visual styling lives in inline `style={{}}` objects (see
+ * src/lib/tokens.ts). This file only adds mobile/tablet overrides on top —
+ * it must never change anything at >=1024px (desktop stays pixel-identical).
+ *
+ * Inline styles win over classes by specificity, so overrides below use
+ * `!important`, scoped inside @media blocks only.
+ */
+
+/* Safety net: a grid/flex child's intrinsic content (a wide table, a
+   fixed-column kanban) can otherwise blow out the page width instead of
+   scrolling inside its own wrapper. Harmless at any width — only clips
+   overflow that would otherwise force a scrollbar. */
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* ---------- Tablet & phone (<=768px) ---------- */
+@media (max-width: 768px) {
+  /* AppShell: sidebar becomes an off-canvas drawer.
+     minmax(0, 1fr) — not bare 1fr — so this track can shrink below the
+     intrinsic width of wide content (table/kanban) instead of stretching
+     the grid (and the page) to fit it. */
+  .tp-app {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .tp-topbar {
+    display: flex !important;
+  }
+
+  .tp-sidebar {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    /* No box-sizing reset exists anywhere in this project, so the default
+       content-box applies: height + the sidebar's own 24px/18px padding
+       was rendering 48px taller than the viewport, pushing the footer
+       (avatar/name/plan) below the visible screen. border-box makes
+       height include that padding so the box == the viewport, no more,
+       no less. */
+    box-sizing: border-box;
+    /* 100vh uses the layout viewport, which on mobile browsers is taller
+       than what's actually visible under the address bar; 100dvh tracks
+       the real visible area. overflow-y is a safety net so content
+       scrolls instead of clipping if it's ever taller than the screen. */
+    height: 100vh;
+    height: 100dvh;
+    overflow-y: auto;
+    width: 220px;
+    z-index: 40;
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+  }
+
+  .tp-sidebar.tp-open {
+    transform: translateX(0);
+  }
+
+  .tp-sidebar-close {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tp-main {
+    padding: 16px !important;
+    padding-top: 72px !important;
+    min-width: 0 !important;
+  }
+
+  /* Kanban: keep 5 columns, scroll horizontally */
+  .tp-kanban {
+    grid-auto-flow: column !important;
+    grid-auto-columns: 240px !important;
+    grid-template-columns: none !important;
+    overflow-x: auto !important;
+    padding-bottom: 8px;
+  }
+
+  /* Table: drop to 2 columns (Empresa/cargo, Status) — fits without scroll */
+  .tp-col-hide-mobile {
+    display: none !important;
+  }
+
+  /* Public marketing nav: hide inline links, show hamburger */
+  .tp-nav {
+    padding: 16px 20px !important;
+  }
+  .tp-nav-links,
+  .tp-nav-desktop-cta {
+    display: none !important;
+  }
+  .tp-nav-burger {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+  .tp-nav-mobile-menu {
+    display: flex !important;
+  }
+
+  /* 2/3-col grids collapse to 1 col */
+  .tp-hero,
+  .tp-features,
+  .tp-pricing,
+  .tp-form2,
+  .tp-detail2 {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Section paddings */
+  .tp-section {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* Fluid headings */
+  .tp-h1-hero {
+    font-size: 34px !important;
+  }
+  .tp-h2-cta {
+    font-size: 26px !important;
+  }
+  .tp-pricing-h1 {
+    font-size: 26px !important;
+  }
+  .tp-detail-h1 {
+    font-size: 22px !important;
+  }
+
+  .tp-login-card {
+    max-width: 100% !important;
+  }
+
+  .tp-nowrap-heading {
+    white-space: normal !important;
+  }
+}
+
+/* ---------- Narrow phone (<=480px) ---------- */
+@media (max-width: 480px) {
+  .tp-h1-hero {
+    font-size: 28px !important;
+  }
+  .tp-pricing-price {
+    font-size: 32px !important;
+  }
+  .tp-section {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}

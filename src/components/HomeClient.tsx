@@ -145,7 +145,7 @@ export function HomeClient({
           <div style={{ border: "3px solid #111", background: color.paper, boxShadow: shadow.card, padding: 28 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 16, flexWrap: "wrap" }}>
               <div>
-                <h1 style={{ fontFamily: font.display, fontWeight: 700, fontSize: 30, margin: 0, letterSpacing: "-0.5px" }}>
+                <h1 className="tp-detail-h1" style={{ fontFamily: font.display, fontWeight: 700, fontSize: 30, margin: 0, letterSpacing: "-0.5px" }}>
                   {detail.company}
                 </h1>
                 <p style={{ fontSize: 16, color: "#555", margin: "4px 0 0" }}>{detail.role}</p>
@@ -153,7 +153,7 @@ export function HomeClient({
               <StatusBadge status={detail.status} />
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18, margin: "26px 0" }}>
+            <div className="tp-detail2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18, margin: "26px 0" }}>
               <DetailField label="Aplicado em" value={detail.appliedAt || "—"} />
               <DetailField label="Próxima data" value={detail.nextDate || "—"} />
               <DetailField label="Fonte" value={detail.source} />
@@ -208,7 +208,7 @@ export function HomeClient({
   return (
     <>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24, flexWrap: "wrap", gap: 14 }}>
-        <h1 style={{ fontFamily: font.display, fontWeight: 700, fontSize: 26, margin: 0, whiteSpace: "nowrap" }}>
+        <h1 className="tp-nowrap-heading" style={{ fontFamily: font.display, fontWeight: 700, fontSize: 26, margin: 0, whiteSpace: "nowrap" }}>
           Minhas vagas{" "}
           <span style={{ fontFamily: font.mono, fontWeight: 500, fontSize: 13, color: "#777" }}>— {counter}</span>
         </h1>
@@ -241,12 +241,14 @@ export function HomeClient({
         <EmptyState onAdd={openNew} />
       ) : view === "table" ? (
         <>
+          <div className="tp-table-wrap">
           <table style={{ width: "100%", borderCollapse: "collapse", border: "3px solid #111", background: color.paper }}>
             <thead>
               <tr>
                 {["Empresa / cargo", "Status", "Aplicado em", "Próxima data", "Fonte", ""].map((h, i) => (
                   <th
                     key={i}
+                    className={i >= 2 ? "tp-col-hide-mobile" : undefined}
                     style={{
                       textAlign: "left",
                       fontFamily: font.mono,
@@ -275,14 +277,15 @@ export function HomeClient({
                     <span style={{ display: "block", fontWeight: 400, color: "#666", fontSize: 12, marginTop: 2 }}>{j.role}</span>
                   </td>
                   <td style={tdStyle}><StatusBadge status={j.status} /></td>
-                  <td style={{ ...tdStyle, fontFamily: font.mono, fontWeight: 500, fontSize: 13 }}>{j.appliedAt || "—"}</td>
-                  <td style={{ ...tdStyle, fontFamily: font.mono, fontWeight: 500, fontSize: 13 }}>{j.nextDate || "—"}</td>
-                  <td style={tdStyle}>{j.source}</td>
-                  <td style={{ ...tdStyle, textAlign: "center", fontSize: 16 }}>↗</td>
+                  <td className="tp-col-hide-mobile" style={{ ...tdStyle, fontFamily: font.mono, fontWeight: 500, fontSize: 13 }}>{j.appliedAt || "—"}</td>
+                  <td className="tp-col-hide-mobile" style={{ ...tdStyle, fontFamily: font.mono, fontWeight: 500, fontSize: 13 }}>{j.nextDate || "—"}</td>
+                  <td className="tp-col-hide-mobile" style={tdStyle}>{j.source}</td>
+                  <td className="tp-col-hide-mobile" style={{ ...tdStyle, textAlign: "center", fontSize: 16 }}>↗</td>
                 </tr>
               ))}
             </tbody>
           </table>
+          </div>
           <div style={{ fontFamily: font.mono, fontWeight: 500, fontSize: 12, color: "#999", marginTop: 14 }}>
             Dica: mude para o Kanban pra arrastar as vagas entre etapas.
           </div>
