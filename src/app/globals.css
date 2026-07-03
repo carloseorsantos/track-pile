@@ -36,7 +36,20 @@ body {
     position: fixed !important;
     top: 0;
     left: 0;
+    /* No box-sizing reset exists anywhere in this project, so the default
+       content-box applies: height + the sidebar's own 24px/18px padding
+       was rendering 48px taller than the viewport, pushing the footer
+       (avatar/name/plan) below the visible screen. border-box makes
+       height include that padding so the box == the viewport, no more,
+       no less. */
+    box-sizing: border-box;
+    /* 100vh uses the layout viewport, which on mobile browsers is taller
+       than what's actually visible under the address bar; 100dvh tracks
+       the real visible area. overflow-y is a safety net so content
+       scrolls instead of clipping if it's ever taller than the screen. */
     height: 100vh;
+    height: 100dvh;
+    overflow-y: auto;
     width: 220px;
     z-index: 40;
     transform: translateX(-100%);
