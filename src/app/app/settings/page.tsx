@@ -1,6 +1,6 @@
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { color, font, shadow } from "@/lib/tokens";
+import { color, font, Language, shadow } from "@/lib/tokens";
 import { SettingsToggles } from "@/components/SettingsToggles";
 import { LogoutButton, DeleteAccountButton } from "@/components/NavButtons";
 
@@ -8,7 +8,7 @@ export default async function SettingsPage() {
   const session = await auth();
   const dbUser = await prisma.user.findUnique({
     where: { id: session!.user!.id! },
-    select: { weeklyDigest: true, interviewEmails: true, plan: true },
+    select: { weeklyDigest: true, interviewEmails: true, plan: true, language: true },
   });
   const isPro = dbUser?.plan === "PRO";
 
@@ -22,6 +22,7 @@ export default async function SettingsPage() {
         isPro={isPro}
         initialDigest={dbUser?.weeklyDigest ?? true}
         initialInterview={dbUser?.interviewEmails ?? false}
+        language={(dbUser?.language as Language) ?? "pt-BR"}
       />
 
       <div

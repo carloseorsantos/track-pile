@@ -17,6 +17,7 @@ model User {
   image         String?
   plan          Plan      @default(FREE)
   createdAt     DateTime  @default(now())
+  language      String    @default("pt-BR")
 
   accounts Account[]
   sessions Session[]

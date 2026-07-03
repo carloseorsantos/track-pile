@@ -99,6 +99,14 @@ export const CURRENCY_ORDER: Currency[] = [
   "RUB",
 ];
 
+/** Editable profile language — cosmetic for now (no i18n UI translation yet). */
+export const LANGUAGE_OPTIONS = [
+  { value: "pt-BR", label: "Português (BR)" },
+  { value: "en", label: "English (US)" },
+] as const;
+
+export type Language = (typeof LANGUAGE_OPTIONS)[number]["value"];
+
 export function badgeColors(status: JobStatus): { bg: string; fg: string } {
   switch (status) {
     case "Entrevista técnica":
