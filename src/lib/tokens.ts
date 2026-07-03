@@ -65,6 +65,40 @@ export const KANBAN_COLUMNS: { name: string; statuses: JobStatus[] }[] = [
   { name: "ENCERRADO", statuses: ["Rejeitado"] },
 ];
 
+/** Currency → salary field mask/select mapping. ISO 4217 codes, curated to common ones. */
+export type Currency = string;
+
+export const CURRENCY_ORDER: Currency[] = [
+  "BRL",
+  "USD",
+  "EUR",
+  "GBP",
+  "JPY",
+  "CHF",
+  "CAD",
+  "AUD",
+  "CNY",
+  "HKD",
+  "SGD",
+  "INR",
+  "MXN",
+  "ARS",
+  "CLP",
+  "COP",
+  "PEN",
+  "UYU",
+  "ZAR",
+  "SEK",
+  "NOK",
+  "DKK",
+  "PLN",
+  "TRY",
+  "AED",
+  "NZD",
+  "KRW",
+  "RUB",
+];
+
 export function badgeColors(status: JobStatus): { bg: string; fg: string } {
   switch (status) {
     case "Entrevista técnica":

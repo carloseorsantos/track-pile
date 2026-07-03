@@ -1,4 +1,4 @@
-import { JobStatus } from "./tokens";
+import { Currency, JobStatus } from "./tokens";
 
 export type Job = {
   id: string;
@@ -10,5 +10,6 @@ export type Job = {
   appliedAt: Date | null;
   nextDate: Date | null;
   salary: string | null;
+  salaryCurrency: Currency | null;
   notes: string | null;
 };

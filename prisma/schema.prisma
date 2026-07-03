@@ -69,19 +69,20 @@ enum Plan {
 }
 
 model Job {
-  id        String   @id @default(cuid())
-  userId    String
-  company   String
-  role      String
-  status    String   @default("Salvo")
-  link      String?
-  source    String   @default("LinkedIn")
-  appliedAt DateTime?
-  nextDate  DateTime?
-  salary    String?
-  notes     String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id             String    @id @default(cuid())
+  userId         String
+  company        String
+  role           String
+  status         String    @default("Salvo")
+  link           String?
+  source         String    @default("LinkedIn")
+  appliedAt      DateTime?
+  nextDate       DateTime?
+  salary         String?
+  salaryCurrency String?
+  notes          String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
 
   user    User            @relation(fields: [userId], references: [id], onDelete: Cascade)
   history StatusHistory[]

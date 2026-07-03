@@ -26,6 +26,7 @@ export default async function HomePage() {
     appliedAt: r.appliedAt,
     nextDate: r.nextDate,
     salary: r.salary,
+    salaryCurrency: r.salaryCurrency,
     notes: r.notes,
   }));
 
