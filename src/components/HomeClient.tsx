@@ -287,6 +287,7 @@ export function HomeClient({
               style={{ ...controlInputStyle, flex: "1 1 220px" }}
             />
             <select
+              className="tp-col-hide-mobile"
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value as JobStatus | "Todos")}
               style={{ ...controlInputStyle, cursor: "pointer" }}
@@ -297,6 +298,7 @@ export function HomeClient({
               ))}
             </select>
             <select
+              className="tp-col-hide-mobile"
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as "appliedAt" | "nextDate")}
               style={{ ...controlInputStyle, cursor: "pointer" }}
@@ -306,6 +308,7 @@ export function HomeClient({
             </select>
             <button
               type="button"
+              className="tp-col-hide-mobile"
               onClick={() => setSortDir((d) => (d === "asc" ? "desc" : "asc"))}
               style={{ ...controlInputStyle, cursor: "pointer", fontFamily: font.mono, fontWeight: 500 }}
             >
