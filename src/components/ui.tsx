@@ -115,6 +115,81 @@ export function StatusBadge({
   );
 }
 
+/* ---------------- Plan badge ---------------- */
+export function PlanBadge({
+  plan,
+  compact = false,
+}: {
+  plan: "FREE" | "PRO";
+  compact?: boolean;
+}) {
+  const fontSize = compact ? 10 : 11;
+  const padding = compact ? "3px 7px" : "4px 9px";
+
+  if (plan !== "PRO") {
+    return (
+      <span
+        style={{
+          fontFamily: font.mono,
+          fontWeight: 500,
+          fontSize,
+          padding,
+          border: "2px solid #111",
+          boxShadow: shadow.badge,
+          background: color.gray,
+          color: color.ink,
+          display: "inline-block",
+        }}
+      >
+        Free
+      </span>
+    );
+  }
+
+  return (
+    <>
+      <span
+        style={{
+          position: "relative",
+          overflow: "hidden",
+          fontFamily: font.display,
+          fontWeight: 700,
+          fontSize,
+          letterSpacing: 0.5,
+          padding,
+          border: "2px solid #111",
+          boxShadow: shadow.badge,
+          background: color.yellow,
+          color: color.ink,
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 4,
+        }}
+      >
+        <span aria-hidden style={{ lineHeight: 1 }}>✦</span>
+        PRO
+        <span className="tp-plan-shine" aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none" }} />
+      </span>
+      <style>{`
+        .tp-plan-shine {
+          background: linear-gradient(115deg, transparent 20%, rgba(255,255,255,0.75) 45%, transparent 70%);
+          background-size: 200% 100%;
+          background-position: 150% 0;
+        }
+        @media (prefers-reduced-motion: no-preference) {
+          .tp-plan-shine {
+            animation: tp-plan-shine 2.6s ease-in-out infinite;
+          }
+        }
+        @keyframes tp-plan-shine {
+          0% { background-position: 150% 0; }
+          60%, 100% { background-position: -50% 0; }
+        }
+      `}</style>
+    </>
+  );
+}
+
 /* ---------------- Card ---------------- */
 export function Card({
   children,
