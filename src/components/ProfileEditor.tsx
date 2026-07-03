@@ -37,8 +37,9 @@ export function ProfileEditor({
   const [nameDraft, setNameDraft] = useState(initialName);
   const [, start] = useTransition();
   const toast = useToast();
-  // Enter/Escape both blur the input; skip the onBlur save right after Escape
-  // so cancelling doesn't immediately re-trigger a save.
+  const nameInputRef = useRef<HTMLInputElement>(null);
+  // Cancelling blurs the input itself (see cancelNameEdit), which would
+  // otherwise re-trigger the onBlur save; this skips exactly that one blur.
   const skipBlurSave = useRef(false);
 
   function persist(next: { name: string; language: Language }, revert: () => void) {
@@ -75,6 +76,10 @@ export function ProfileEditor({
 
   function cancelNameEdit() {
     skipBlurSave.current = true;
+    // Blur explicitly, before the input unmounts, so exactly one (guarded)
+    // blur event fires here instead of an unpredictable one from React
+    // removing a still-focused node.
+    nameInputRef.current?.blur();
     setNameDraft(name);
     setEditingName(false);
   }
@@ -88,6 +93,7 @@ export function ProfileEditor({
         </div>
         {editingName ? (
           <input
+            ref={nameInputRef}
             style={{ ...inputStyle, minWidth: 160 }}
             value={nameDraft}
             maxLength={120}
