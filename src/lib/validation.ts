@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { STATUS_ORDER } from "./tokens";
+import { CURRENCY_ORDER, Currency, STATUS_ORDER } from "./tokens";
 
 export const jobSchema = z.object({
   company: z.string().min(1, "Empresa é obrigatória").max(120),
@@ -10,6 +10,10 @@ export const jobSchema = z.object({
   appliedAt: z.union([z.coerce.date(), z.null()]).optional(),
   nextDate: z.union([z.coerce.date(), z.null()]).optional(),
   salary: z.string().max(60).optional(),
+  salaryCurrency: z
+    .enum(CURRENCY_ORDER as [Currency, ...Currency[]])
+    .optional()
+    .nullable(),
   notes: z.string().max(2000).optional(),
 });
 

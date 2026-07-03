@@ -1,9 +1,10 @@
 "use client";
 
 import { CSSProperties, useState } from "react";
-import { color, font, shadow, STATUS_ORDER } from "@/lib/tokens";
+import { color, Currency, CURRENCY_LABELS, CURRENCY_ORDER, font, shadow, STATUS_ORDER } from "@/lib/tokens";
 import { Button } from "./ui";
 import { Job } from "@/lib/types";
+import { maskCurrencyInput } from "@/lib/currency";
 import {
   fromDateInputValue,
   fromDateTimeInputValue,
@@ -46,6 +47,7 @@ const empty: JobFormValue = {
   appliedAt: null,
   nextDate: null,
   salary: "",
+  salaryCurrency: "BRL",
   notes: "",
 };
 
@@ -71,6 +73,7 @@ export function JobModal({
           appliedAt: initial.appliedAt ?? null,
           nextDate: initial.nextDate ?? null,
           salary: initial.salary ?? "",
+          salaryCurrency: initial.salaryCurrency ?? "BRL",
           notes: initial.notes ?? "",
         }
       : empty
@@ -191,7 +194,37 @@ export function JobModal({
               <label style={labelStyle}>
                 Faixa salarial <span style={{ color: "#aaa" }}>(opcional)</span>
               </label>
-              <input value={form.salary ?? ""} onChange={(e) => set("salary", e.target.value)} placeholder="R$ 8k – 11k" style={inputStyle} />
+              <div style={{ display: "flex", gap: 8 }}>
+                <select
+                  value={form.salaryCurrency ?? "BRL"}
+                  onChange={(e) => {
+                    const currency = e.target.value as Currency;
+                    setForm((f) => ({
+                      ...f,
+                      salaryCurrency: currency,
+                      salary: f.salary ? maskCurrencyInput(f.salary, currency) : f.salary,
+                    }));
+                  }}
+                  style={{ ...inputStyle, cursor: "pointer", flex: "0 0 140px" }}
+                >
+                  {CURRENCY_ORDER.map((c) => (
+                    <option key={c} value={c}>
+                      {CURRENCY_LABELS[c]}
+                    </option>
+                  ))}
+                </select>
+                <input
+                  value={form.salary ?? ""}
+                  onChange={(e) =>
+                    setForm((f) => ({
+                      ...f,
+                      salary: maskCurrencyInput(e.target.value, f.salaryCurrency ?? "BRL"),
+                    }))
+                  }
+                  placeholder="R$ 8.000,00"
+                  style={{ ...inputStyle, flex: 1 }}
+                />
+              </div>
             </div>
             <div style={{ gridColumn: "1 / -1" }}>
               <label style={labelStyle}>Notas</label>

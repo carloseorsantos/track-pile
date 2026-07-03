@@ -65,6 +65,17 @@ export const KANBAN_COLUMNS: { name: string; statuses: JobStatus[] }[] = [
   { name: "ENCERRADO", statuses: ["Rejeitado"] },
 ];
 
+/** Currency → salary field mask/select mapping. */
+export type Currency = "BRL" | "USD" | "EUR";
+
+export const CURRENCY_ORDER: Currency[] = ["BRL", "USD", "EUR"];
+
+export const CURRENCY_LABELS: Record<Currency, string> = {
+  BRL: "R$ Real",
+  USD: "$ Dólar",
+  EUR: "€ Euro",
+};
+
 export function badgeColors(status: JobStatus): { bg: string; fg: string } {
   switch (status) {
     case "Entrevista técnica":

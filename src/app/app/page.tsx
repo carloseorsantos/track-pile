@@ -2,7 +2,7 @@ import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { HomeClient } from "@/components/HomeClient";
 import { Job } from "@/lib/types";
-import { JobStatus } from "@/lib/tokens";
+import { Currency, JobStatus } from "@/lib/tokens";
 
 export default async function HomePage() {
   const session = await auth();
@@ -26,6 +26,7 @@ export default async function HomePage() {
     appliedAt: r.appliedAt,
     nextDate: r.nextDate,
     salary: r.salary,
+    salaryCurrency: r.salaryCurrency as Currency | null,
     notes: r.notes,
   }));
 
