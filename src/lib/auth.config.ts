@@ -3,6 +3,10 @@ import Google from "next-auth/providers/google";
 
 // Edge-safe: no Prisma adapter here, so this can be imported from middleware.
 export const authConfig = {
+  // Vercel auto-trusts the request host; without this, Auth.js rejects any
+  // host it can't verify itself (e.g. `next start` outside Vercel) with
+  // UntrustedHost, surfaced to users as a generic "server configuration" error.
+  trustHost: true,
   providers: [Google],
   session: { strategy: "jwt" },
   pages: {
