@@ -56,6 +56,9 @@ export function HomeClient({
             setJobs((js) =>
               js.map((j) => (j.id === editing.id ? { ...j, ...v, status: v.status as JobStatus } : j))
             );
+            setDetail((d) =>
+              d && d.id === editing.id ? { ...d, ...v, status: v.status as JobStatus } : d
+            );
             toast.success("Vaga atualizada!");
           } else {
             toast.error(res.error ?? "Não foi possível salvar a vaga.");
