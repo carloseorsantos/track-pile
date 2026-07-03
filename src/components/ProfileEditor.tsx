@@ -1,9 +1,8 @@
 "use client";
 
-import { CSSProperties, useState, useTransition } from "react";
+import { CSSProperties, useRef, useState, useTransition } from "react";
 import { color, font, LANGUAGE_OPTIONS, Language, shadow } from "@/lib/tokens";
 import { updateProfile } from "@/app/app/settings-actions";
-import { Button } from "./ui";
 import { useToast } from "./Toast";
 
 const rowStyle: CSSProperties = {
@@ -13,17 +12,6 @@ const rowStyle: CSSProperties = {
   flexWrap: "wrap",
   gap: 8,
   padding: "16px 0",
-};
-
-const labelStyle: CSSProperties = {
-  fontFamily: font.mono,
-  fontWeight: 500,
-  fontSize: 11,
-  textTransform: "uppercase",
-  letterSpacing: ".5px",
-  color: "#555",
-  display: "block",
-  marginBottom: 6,
 };
 
 const inputStyle: CSSProperties = {
@@ -49,6 +37,9 @@ export function ProfileEditor({
   const [nameDraft, setNameDraft] = useState(initialName);
   const [, start] = useTransition();
   const toast = useToast();
+  // Enter/Escape both blur the input; skip the onBlur save right after Escape
+  // so cancelling doesn't immediately re-trigger a save.
+  const skipBlurSave = useRef(false);
 
   function persist(next: { name: string; language: Language }, revert: () => void) {
     start(async () => {
@@ -83,6 +74,7 @@ export function ProfileEditor({
   }
 
   function cancelNameEdit() {
+    skipBlurSave.current = true;
     setNameDraft(name);
     setEditingName(false);
   }
@@ -95,35 +87,45 @@ export function ProfileEditor({
           <div style={{ fontSize: 12, color: "#777", marginTop: 3 }}>Como aparece no sistema</div>
         </div>
         {editingName ? (
-          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <div>
-              <label style={labelStyle} htmlFor="profile-name">
-                Nome
-              </label>
-              <input
-                id="profile-name"
-                style={inputStyle}
-                value={nameDraft}
-                maxLength={120}
-                onChange={(e) => setNameDraft(e.target.value)}
-                autoFocus
-              />
-            </div>
-            <Button variant="blue" onClick={saveName}>
-              Salvar
-            </Button>
-            <Button variant="paper" onClick={cancelNameEdit}>
-              Cancelar
-            </Button>
-          </div>
+          <input
+            style={{ ...inputStyle, minWidth: 160 }}
+            value={nameDraft}
+            maxLength={120}
+            aria-label="Nome de exibição"
+            onChange={(e) => setNameDraft(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") saveName();
+              if (e.key === "Escape") cancelNameEdit();
+            }}
+            onBlur={() => {
+              if (skipBlurSave.current) {
+                skipBlurSave.current = false;
+                return;
+              }
+              saveName();
+            }}
+            autoFocus
+          />
         ) : (
-          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <span style={{ fontFamily: font.mono, fontWeight: 500, fontSize: 13, overflowWrap: "anywhere" }}>
               {name}
             </span>
-            <Button variant="paper" onClick={() => setEditingName(true)}>
-              Editar
-            </Button>
+            <button
+              onClick={() => setEditingName(true)}
+              aria-label="Editar nome"
+              style={{
+                border: "none",
+                background: "transparent",
+                cursor: "pointer",
+                fontSize: 14,
+                lineHeight: 1,
+                padding: 2,
+                color: "#777",
+              }}
+            >
+              ✎
+            </button>
           </div>
         )}
       </div>
