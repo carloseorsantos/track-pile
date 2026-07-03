@@ -22,9 +22,12 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.5",
     "@types/node": "^22.10.2",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^15.1.11",
     "prisma": "^6.1.0",
     "typescript": "^5.7.2"
   }

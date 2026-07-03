@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition, CSSProperties } from "react";
-import { color, font, shadow, JobStatus, STATUS_ORDER } from "@/lib/tokens";
+import { color, font, shadow, JobStatus } from "@/lib/tokens";
 import { Job } from "@/lib/types";
 import { formatDate, formatDateTime } from "@/lib/dates";
 import { Button, StatusBadge } from "./ui";
@@ -33,7 +33,6 @@ export function HomeClient({
   const toast = useToast();
   const [, startTransition] = useTransition();
 
-  const limit = isPro ? Infinity : FREE_JOB_LIMIT;
   const counter = isPro ? `${jobs.length} vagas` : `${jobs.length} de ${FREE_JOB_LIMIT}`;
 
   const CONNECTION_ERROR = "Erro de conexão. Verifique sua internet e tente novamente.";

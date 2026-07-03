@@ -1,6 +1,4 @@
-import Link from "next/link";
 import { color, font, shadow } from "@/lib/tokens";
-import { Logo } from "@/components/ui";
 import { PublicNav, LinkButton } from "@/components/PublicNav";
 
 export default function LandingPage() {
