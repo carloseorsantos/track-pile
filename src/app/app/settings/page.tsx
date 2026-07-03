@@ -34,11 +34,11 @@ export default async function SettingsPage() {
           marginTop: 20,
         }}
       >
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 0", borderBottom: "2px dashed #ccc" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8, padding: "16px 0", borderBottom: "2px dashed #ccc" }}>
           <div><div style={{ fontWeight: 600, fontSize: 14, color: color.coral }}>Sair da conta</div></div>
           <LogoutButton />
         </div>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 0" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8, padding: "16px 0" }}>
           <div>
             <div style={{ fontWeight: 600, fontSize: 14, color: color.coral }}>Excluir conta</div>
             <div style={{ fontSize: 12, color: "#777", marginTop: 3 }}>Essa ação não pode ser desfeita</div>

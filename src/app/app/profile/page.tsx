@@ -18,6 +18,8 @@ export default async function ProfilePage() {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
+    flexWrap: "wrap",
+    gap: 8,
     padding: "16px 0",
   } as const;
 
@@ -27,7 +29,7 @@ export default async function ProfilePage() {
         Perfil
       </h1>
       <div style={{ border: "3px solid #111", background: color.paper, boxShadow: shadow.card, padding: 24, maxWidth: 640 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 18, marginBottom: 32 }}>
+        <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: 18, marginBottom: 32 }}>
           <div
             style={{
               width: 64,
@@ -51,7 +53,7 @@ export default async function ProfilePage() {
             <h3 style={{ fontFamily: font.display, fontWeight: 700, fontSize: 20, margin: 0 }}>
               {user.name}
             </h3>
-            <div style={{ fontSize: 12, color: "#777" }}>{user.email}</div>
+            <div style={{ fontSize: 12, color: "#777", overflowWrap: "anywhere" }}>{user.email}</div>
             <span
               style={{
                 fontFamily: font.mono,
@@ -76,14 +78,14 @@ export default async function ProfilePage() {
             <div style={{ fontWeight: 600, fontSize: 14 }}>Nome de exibição</div>
             <div style={{ fontSize: 12, color: "#777", marginTop: 3 }}>Como aparece no sistema</div>
           </div>
-          <span style={{ fontFamily: font.mono, fontWeight: 500, fontSize: 13 }}>{user.name}</span>
+          <span style={{ fontFamily: font.mono, fontWeight: 500, fontSize: 13, overflowWrap: "anywhere" }}>{user.name}</span>
         </div>
         <div style={{ ...rowStyle, borderBottom: "2px dashed #ccc" }}>
           <div>
             <div style={{ fontWeight: 600, fontSize: 14 }}>E-mail</div>
             <div style={{ fontSize: 12, color: "#777", marginTop: 3 }}>Vinculado à sua conta Google</div>
           </div>
-          <span style={{ fontFamily: font.mono, fontWeight: 500, fontSize: 13 }}>{user.email}</span>
+          <span style={{ fontFamily: font.mono, fontWeight: 500, fontSize: 13, overflowWrap: "anywhere" }}>{user.email}</span>
         </div>
         <div style={rowStyle}>
           <div><div style={{ fontWeight: 600, fontSize: 14 }}>Membro desde</div></div>

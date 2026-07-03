@@ -69,7 +69,7 @@ export function SettingsToggles({
 
   return (
     <div style={{ border: "3px solid #111", background: color.paper, boxShadow: shadow.card, padding: 24, maxWidth: 640 }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 0", borderBottom: "2px dashed #ccc" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8, padding: "16px 0", borderBottom: "2px dashed #ccc" }}>
         <div>
           <div style={{ fontWeight: 600, fontSize: 14 }}>Lembrete de entrevista por e-mail</div>
           <div style={{ fontSize: 12, color: "#777", marginTop: 3 }}>
@@ -87,7 +87,7 @@ export function SettingsToggles({
           }}
         />
       </div>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 0", borderBottom: "2px dashed #ccc" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8, padding: "16px 0", borderBottom: "2px dashed #ccc" }}>
         <div>
           <div style={{ fontWeight: 600, fontSize: 14 }}>Resumo semanal</div>
           <div style={{ fontSize: 12, color: "#777", marginTop: 3 }}>Receba um resumo das suas vagas toda segunda</div>
@@ -102,7 +102,7 @@ export function SettingsToggles({
           }}
         />
       </div>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 0" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8, padding: "16px 0" }}>
         <div><div style={{ fontWeight: 600, fontSize: 14 }}>Idioma</div></div>
         <span style={{ fontFamily: font.mono, fontWeight: 500, fontSize: 13 }}>Português (BR)</span>
       </div>
