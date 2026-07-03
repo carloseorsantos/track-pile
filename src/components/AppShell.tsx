@@ -26,7 +26,7 @@ export function AppShell({
   const router = useRouter();
   const [open, setOpen] = useState(false);
 
-  const link = (href: string, label: string, icon: string) => {
+  const link = (href: string, label: string) => {
     const active =
       href === "/app" ? pathname === "/app" : pathname.startsWith(href);
     const style: CSSProperties = {
@@ -34,7 +34,7 @@ export function AppShell({
       alignItems: "center",
       gap: 10,
       padding: "11px 12px",
-      fontWeight: 500,
+      fontWeight: active ? 700 : 500,
       fontSize: 14,
       marginBottom: 6,
       cursor: "pointer",
@@ -50,7 +50,6 @@ export function AppShell({
           router.push(href);
         }}
       >
-        <span>{icon}</span>
         {label}
       </div>
     );
@@ -142,9 +141,9 @@ export function AppShell({
             ×
           </button>
         </div>
-        {link("/app", "Home", "🏠")}
-        {link("/app/profile", "Perfil", "👤")}
-        {link("/app/settings", "Configurações", "⚙️")}
+        {link("/app", "Dashboard")}
+        {link("/app/profile", "Perfil")}
+        {link("/app/settings", "Configurações")}
         <div style={{ flex: 1 }} />
         <div style={{ display: "flex", alignItems: "center", gap: 10, borderTop: "2px dashed #ccc", paddingTop: 16, fontSize: 13 }}>
           <div
