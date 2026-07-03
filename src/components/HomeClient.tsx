@@ -246,7 +246,7 @@ export function HomeClient({
         <EmptyState onAdd={openNew} />
       ) : view === "table" ? (
         <>
-          <div className="tp-table-wrap">
+          <div className="tp-table-wrap" style={{ maxHeight: "70vh", overflowY: "auto" }}>
           <table style={{ width: "100%", borderCollapse: "collapse", border: "3px solid #111", background: color.paper }}>
             <thead>
               <tr>
