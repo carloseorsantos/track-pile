@@ -4,31 +4,22 @@ import { CSSProperties, ReactNode, useState } from "react";
 import { color, shadow, font, badgeColors, JobStatus } from "@/lib/tokens";
 
 /* ---------------- Logo ---------------- */
+// SVG's text is set at font-size 30 inside a 44px-tall viewBox, so scaling
+// the rendered height by 44/30 keeps `size` meaning "font size", matching
+// the old text-based logo's API.
+const LOGO_SVG_ASPECT = 44 / 30;
+
 export function Logo({ size = 20 }: { size?: number }) {
   return (
-    <div
+    <img
+      src="/logo.svg"
+      alt="trackpile"
       style={{
-        fontFamily: font.display,
-        fontWeight: 700,
-        fontSize: size,
-        letterSpacing: "-0.5px",
-        display: "inline-flex",
-        alignItems: "center",
+        height: size * LOGO_SVG_ASPECT,
+        width: "auto",
         userSelect: "none",
       }}
-    >
-      TRACK
-      <span
-        style={{
-          background: color.yellow,
-          padding: "0 6px",
-          border: "2px solid #111",
-          marginLeft: 1,
-        }}
-      >
-        PILE
-      </span>
-    </div>
+    />
   );
 }
 
