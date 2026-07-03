@@ -1,8 +1,11 @@
 "use client";
 
+import { useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { signIn, signOut } from "next-auth/react";
+import { deleteAccount } from "@/app/app/settings-actions";
 import { Button } from "./ui";
+import { useToast } from "./Toast";
 
 export function UpgradeButton() {
   const router = useRouter();
@@ -22,17 +25,32 @@ export function LogoutButton({ label = "Logout" }: { label?: string }) {
 }
 
 export function DeleteAccountButton() {
+  const [isPending, start] = useTransition();
+  const toast = useToast();
+
   return (
     <Button
       variant="coral"
       onClick={() => {
-        if (confirm("Tem certeza? Essa ação não pode ser desfeita e apagará todas as suas vagas.")) {
-          // For MVP: sign out. A real delete endpoint would run here first.
-          signOut({ callbackUrl: "/" });
+        if (isPending) return;
+        if (!confirm("Tem certeza? Essa ação não pode ser desfeita e apagará todas as suas vagas.")) {
+          return;
         }
+        start(async () => {
+          try {
+            const res = await deleteAccount();
+            if (res.ok) {
+              signOut({ callbackUrl: "/" });
+            } else {
+              toast.error(res.error ?? "Não foi possível excluir a conta.");
+            }
+          } catch {
+            toast.error("Erro de conexão. A conta não foi excluída.");
+          }
+        });
       }}
     >
-      Excluir
+      {isPending ? "Excluindo..." : "Excluir"}
     </Button>
   );
 }
