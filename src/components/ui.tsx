@@ -40,6 +40,7 @@ export function Button({
   style,
   type = "button",
   full,
+  disabled,
 }: {
   children: ReactNode;
   variant?: BtnVariant;
@@ -47,6 +48,7 @@ export function Button({
   style?: CSSProperties;
   type?: "button" | "submit";
   full?: boolean;
+  disabled?: boolean;
 }) {
   const [pressed, setPressed] = useState(false);
   const v = btnBg[variant];
@@ -54,6 +56,7 @@ export function Button({
     <button
       type={type}
       onClick={onClick}
+      disabled={disabled}
       onMouseDown={() => setPressed(true)}
       onMouseUp={() => setPressed(false)}
       onMouseLeave={() => setPressed(false)}
@@ -65,7 +68,8 @@ export function Button({
         border: "3px solid #111",
         background: v.bg,
         color: v.fg,
-        cursor: "pointer",
+        cursor: disabled ? "not-allowed" : "pointer",
+        opacity: disabled ? 0.6 : 1,
         display: "inline-flex",
         alignItems: "center",
         gap: 8,
