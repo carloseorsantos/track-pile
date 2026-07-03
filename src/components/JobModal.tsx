@@ -4,6 +4,12 @@ import { CSSProperties, useState } from "react";
 import { color, font, shadow, STATUS_ORDER } from "@/lib/tokens";
 import { Button } from "./ui";
 import { Job } from "@/lib/types";
+import {
+  fromDateInputValue,
+  fromDateTimeInputValue,
+  toDateInputValue,
+  toDateTimeInputValue,
+} from "@/lib/dates";
 
 const labelStyle: CSSProperties = {
   fontFamily: font.mono,
@@ -37,8 +43,8 @@ const empty: JobFormValue = {
   status: "Salvo",
   source: "LinkedIn",
   link: "",
-  appliedAt: "",
-  nextDate: "",
+  appliedAt: null,
+  nextDate: null,
   salary: "",
   notes: "",
 };
@@ -62,15 +68,15 @@ export function JobModal({
           status: initial.status,
           source: initial.source,
           link: initial.link ?? "",
-          appliedAt: initial.appliedAt ?? "",
-          nextDate: initial.nextDate ?? "",
+          appliedAt: initial.appliedAt ?? null,
+          nextDate: initial.nextDate ?? null,
           salary: initial.salary ?? "",
           notes: initial.notes ?? "",
         }
       : empty
   );
 
-  const set = (k: keyof JobFormValue, v: string) =>
+  const set = (k: Exclude<keyof JobFormValue, "appliedAt" | "nextDate">, v: string) =>
     setForm((f) => ({ ...f, [k]: v }));
 
   return (
@@ -165,11 +171,21 @@ export function JobModal({
             </div>
             <div>
               <label style={labelStyle}>Data de aplicação</label>
-              <input value={form.appliedAt ?? ""} onChange={(e) => set("appliedAt", e.target.value)} placeholder="02/07" style={inputStyle} />
+              <input
+                type="date"
+                value={toDateInputValue(form.appliedAt)}
+                onChange={(e) => setForm((f) => ({ ...f, appliedAt: fromDateInputValue(e.target.value) }))}
+                style={inputStyle}
+              />
             </div>
             <div>
               <label style={labelStyle}>Próxima data</label>
-              <input value={form.nextDate ?? ""} onChange={(e) => set("nextDate", e.target.value)} placeholder="08/07 · 14h" style={inputStyle} />
+              <input
+                type="datetime-local"
+                value={toDateTimeInputValue(form.nextDate)}
+                onChange={(e) => setForm((f) => ({ ...f, nextDate: fromDateTimeInputValue(e.target.value) }))}
+                style={inputStyle}
+              />
             </div>
             <div style={{ gridColumn: "1 / -1" }}>
               <label style={labelStyle}>

@@ -14,6 +14,7 @@ import {
 } from "@dnd-kit/core";
 import { color, font, shadow, KANBAN_COLUMNS, JobStatus } from "@/lib/tokens";
 import { Job } from "@/lib/types";
+import { formatDateTime } from "@/lib/dates";
 
 function Kard({ job, onOpen, rotate }: { job: Job; onOpen: () => void; rotate: number }) {
   const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
@@ -52,7 +53,7 @@ function Kard({ job, onOpen, rotate }: { job: Job; onOpen: () => void; rotate: n
             display: "block",
           }}
         >
-          {job.nextDate}
+          {formatDateTime(job.nextDate)}
         </span>
       )}
     </div>
