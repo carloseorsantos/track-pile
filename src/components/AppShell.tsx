@@ -1,7 +1,8 @@
 "use client";
 
 import { CSSProperties, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { color, shadow } from "@/lib/tokens";
 import { Logo } from "./ui";
 
@@ -23,7 +24,6 @@ export function AppShell({
   image?: string | null;
 }) {
   const pathname = usePathname();
-  const router = useRouter();
   const [open, setOpen] = useState(false);
 
   const link = (href: string, label: string) => {
@@ -41,17 +41,13 @@ export function AppShell({
       border: active ? "2px solid #111" : "2px solid transparent",
       background: active ? color.yellow : "transparent",
       boxShadow: active ? shadow.badge : "none",
+      textDecoration: "none",
+      color: "inherit",
     };
     return (
-      <div
-        style={style}
-        onClick={() => {
-          setOpen(false);
-          router.push(href);
-        }}
-      >
+      <Link href={href} prefetch style={style} onClick={() => setOpen(false)}>
         {label}
-      </div>
+      </Link>
     );
   };
 
@@ -113,15 +109,9 @@ export function AppShell({
         style={{ borderRight: "3px solid #111", background: color.paper, padding: "24px 18px", display: "flex", flexDirection: "column" }}
       >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 36 }}>
-          <div
-            style={{ cursor: "pointer" }}
-            onClick={() => {
-              setOpen(false);
-              router.push("/app");
-            }}
-          >
+          <Link href="/app" style={{ cursor: "pointer" }} onClick={() => setOpen(false)}>
             <Logo size={18} />
-          </div>
+          </Link>
           {/* Close button — only useful while the drawer overlays the page
               on mobile; hidden on desktop where the sidebar is static. */}
           <button
