@@ -8,9 +8,9 @@ export default function LandingPage() {
     <div style={{ minHeight: "100vh" }}>
       <PublicNav />
 
-      <div style={{ padding: "80px 48px 60px", display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: 48, alignItems: "center", maxWidth: 1200, margin: "0 auto" }}>
+      <div className="tp-hero tp-section" style={{ padding: "80px 48px 60px", display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: 48, alignItems: "center", maxWidth: 1200, margin: "0 auto" }}>
         <div>
-          <h1 style={{ font: `700 52px/1.05 ${font.display}`, letterSpacing: "-1px", margin: 0 }}>
+          <h1 className="tp-h1-hero" style={{ font: `700 52px/1.05 ${font.display}`, letterSpacing: "-1px", margin: 0 }}>
             Suas 40 vagas abertas no navegador{" "}
             <mark style={{ background: color.coral, color: color.paper, padding: "0 8px" }}>
               cabem numa tela só
@@ -51,8 +51,8 @@ export default function LandingPage() {
         </div>
       </div>
 
-      <div style={{ padding: "60px 48px", borderTop: "3px solid #111", borderBottom: "3px solid #111", background: color.blue, color: color.paper }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 32 }}>
+      <div className="tp-section" style={{ padding: "60px 48px", borderTop: "3px solid #111", borderBottom: "3px solid #111", background: color.blue, color: color.paper }}>
+        <div className="tp-features" style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 32 }}>
           {[
             ["01", "Tabela estilo Notion", "Todas as suas vagas numa tela só. Filtre por status, ordene por data e edite tudo — sem planilha bagunçada, sem 12 abas abertas."],
             ["02", "Kanban por etapa", "Arraste cada vaga de \"Salvo\" até \"Oferta\". Bateu o olho, já sabe onde cada processo travou e o que fazer em seguida."],
@@ -67,8 +67,8 @@ export default function LandingPage() {
         </div>
       </div>
 
-      <div style={{ padding: "80px 48px", textAlign: "center" }}>
-        <h2 style={{ font: `700 36px ${font.display}`, marginBottom: 24 }}>
+      <div className="tp-section" style={{ padding: "80px 48px", textAlign: "center" }}>
+        <h2 className="tp-h2-cta" style={{ font: `700 36px ${font.display}`, marginBottom: 24 }}>
           Sua próxima vaga merece organização.
         </h2>
         <div style={{ display: "flex", justifyContent: "center" }}>

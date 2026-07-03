@@ -26,8 +26,10 @@ export default async function LoginPage({
       }}
     >
       <div
+        className="tp-login-card"
         style={{
           width: 380,
+          maxWidth: "calc(100vw - 32px)",
           textAlign: "center",
           border: "3px solid #111",
           background: color.paper,

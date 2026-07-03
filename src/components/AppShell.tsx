@@ -1,6 +1,6 @@
 "use client";
 
-import { CSSProperties } from "react";
+import { CSSProperties, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { color, font, shadow } from "@/lib/tokens";
 import { Logo } from "./ui";
@@ -24,6 +24,7 @@ export function AppShell({
 }) {
   const pathname = usePathname();
   const router = useRouter();
+  const [open, setOpen] = useState(false);
 
   const link = (href: string, label: string, icon: string) => {
     const active =
@@ -42,7 +43,13 @@ export function AppShell({
       boxShadow: active ? shadow.badge : "none",
     };
     return (
-      <div style={style} onClick={() => router.push(href)}>
+      <div
+        style={style}
+        onClick={() => {
+          setOpen(false);
+          router.push(href);
+        }}
+      >
         <span>{icon}</span>
         {label}
       </div>
@@ -50,10 +57,90 @@ export function AppShell({
   };
 
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "220px 1fr", minHeight: "100vh" }}>
-      <div style={{ borderRight: "3px solid #111", background: color.paper, padding: "24px 18px", display: "flex", flexDirection: "column" }}>
-        <div style={{ marginBottom: 36, cursor: "pointer" }} onClick={() => router.push("/app")}>
-          <Logo size={18} />
+    <div className="tp-app" style={{ display: "grid", gridTemplateColumns: "220px 1fr", minHeight: "100vh" }}>
+      {/* Mobile top bar — hidden on desktop, shown <=768px via CSS */}
+      <div
+        className="tp-topbar"
+        style={{
+          display: "none",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: 56,
+          zIndex: 30,
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "0 16px",
+          background: color.paper,
+          borderBottom: "3px solid #111",
+        }}
+      >
+        <button
+          aria-label="Abrir menu"
+          onClick={() => setOpen(true)}
+          style={{
+            border: "2px solid #111",
+            background: color.paper,
+            width: 36,
+            height: 36,
+            fontSize: 18,
+            cursor: "pointer",
+          }}
+        >
+          ☰
+        </button>
+        <Logo size={16} />
+        <div style={{ width: 36 }} />
+      </div>
+
+      {/* Backdrop — only rendered while drawer is open (mobile only, since
+          the hamburger that sets `open` is itself hidden on desktop) */}
+      {open && (
+        <div
+          className="tp-backdrop"
+          onClick={() => setOpen(false)}
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: "rgba(0,0,0,0.4)",
+            zIndex: 35,
+          }}
+        />
+      )}
+
+      <div
+        className={`tp-sidebar${open ? " tp-open" : ""}`}
+        style={{ borderRight: "3px solid #111", background: color.paper, padding: "24px 18px", display: "flex", flexDirection: "column" }}
+      >
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 36 }}>
+          <div
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              setOpen(false);
+              router.push("/app");
+            }}
+          >
+            <Logo size={18} />
+          </div>
+          {/* Close button — only useful while the drawer overlays the page
+              on mobile; hidden on desktop where the sidebar is static. */}
+          <button
+            className="tp-sidebar-close"
+            aria-label="Fechar menu"
+            onClick={() => setOpen(false)}
+            style={{
+              display: "none",
+              border: "2px solid #111",
+              background: color.paper,
+              width: 30,
+              height: 30,
+              fontSize: 15,
+              cursor: "pointer",
+            }}
+          >
+            ×
+          </button>
         </div>
         {link("/app", "Home", "🏠")}
         {link("/app/profile", "Perfil", "👤")}
@@ -85,7 +172,7 @@ export function AppShell({
           </div>
         </div>
       </div>
-      <div style={{ padding: "28px 36px" }}>{children}</div>
+      <div className="tp-main" style={{ padding: "28px 36px" }}>{children}</div>
     </div>
   );
 }
