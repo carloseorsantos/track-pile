@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { color, font, shadow } from "@/lib/tokens";
+import { color, font, LANGUAGE_OPTIONS, Language, shadow } from "@/lib/tokens";
 import { saveSettings } from "@/app/app/settings-actions";
 import { useToast } from "./Toast";
 
@@ -39,10 +39,12 @@ export function SettingsToggles({
   isPro,
   initialDigest,
   initialInterview,
+  language,
 }: {
   isPro: boolean;
   initialDigest: boolean;
   initialInterview: boolean;
+  language: Language;
 }) {
   const [digest, setDigest] = useState(initialDigest);
   const [interview, setInterview] = useState(initialInterview);
@@ -103,8 +105,13 @@ export function SettingsToggles({
         />
       </div>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8, padding: "16px 0" }}>
-        <div><div style={{ fontWeight: 600, fontSize: 14 }}>Idioma</div></div>
-        <span style={{ fontFamily: font.mono, fontWeight: 500, fontSize: 13 }}>Português (BR)</span>
+        <div>
+          <div style={{ fontWeight: 600, fontSize: 14 }}>Idioma</div>
+          <div style={{ fontSize: 12, color: "#777", marginTop: 3 }}>Edite em Perfil</div>
+        </div>
+        <span style={{ fontFamily: font.mono, fontWeight: 500, fontSize: 13 }}>
+          {LANGUAGE_OPTIONS.find((o) => o.value === language)?.label ?? language}
+        </span>
       </div>
     </div>
   );

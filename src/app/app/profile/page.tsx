@@ -1,6 +1,9 @@
 import { auth } from "@/lib/auth";
-import { color, font, shadow } from "@/lib/tokens";
+import { prisma } from "@/lib/prisma";
+import { color, font, Language, shadow } from "@/lib/tokens";
+import { formatMemberSince } from "@/lib/dates";
 import { UpgradeButton } from "@/components/NavButtons";
+import { ProfileEditor } from "@/components/ProfileEditor";
 
 function initialsOf(name?: string | null) {
   if (!name) return "?";
@@ -10,8 +13,11 @@ function initialsOf(name?: string | null) {
 
 export default async function ProfilePage() {
   const session = await auth();
-  const user = session!.user!;
-  // @ts-expect-error plan from session
+  const dbUser = await prisma.user.findUnique({
+    where: { id: session!.user!.id! },
+    select: { name: true, email: true, image: true, plan: true, createdAt: true, language: true },
+  });
+  const user = dbUser!;
   const isPro = (user.plan ?? "FREE") === "PRO";
 
   const rowStyle = {
@@ -73,13 +79,7 @@ export default async function ProfilePage() {
           </div>
         </div>
 
-        <div style={{ ...rowStyle, borderBottom: "2px dashed #ccc" }}>
-          <div>
-            <div style={{ fontWeight: 600, fontSize: 14 }}>Nome de exibição</div>
-            <div style={{ fontSize: 12, color: "#777", marginTop: 3 }}>Como aparece no sistema</div>
-          </div>
-          <span style={{ fontFamily: font.mono, fontWeight: 500, fontSize: 13, overflowWrap: "anywhere" }}>{user.name}</span>
-        </div>
+        <ProfileEditor initialName={user.name ?? ""} initialLanguage={(user.language as Language) ?? "pt-BR"} />
         <div style={{ ...rowStyle, borderBottom: "2px dashed #ccc" }}>
           <div>
             <div style={{ fontWeight: 600, fontSize: 14 }}>E-mail</div>
@@ -89,7 +89,7 @@ export default async function ProfilePage() {
         </div>
         <div style={rowStyle}>
           <div><div style={{ fontWeight: 600, fontSize: 14 }}>Membro desde</div></div>
-          <span style={{ fontFamily: font.mono, fontWeight: 500, fontSize: 13 }}>Jun 2026</span>
+          <span style={{ fontFamily: font.mono, fontWeight: 500, fontSize: 13 }}>{formatMemberSince(user.createdAt)}</span>
         </div>
 
         {!isPro && (

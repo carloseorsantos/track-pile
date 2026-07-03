@@ -4,6 +4,11 @@ const dateFormatter = new Intl.DateTimeFormat("pt-BR", {
   year: "numeric",
 });
 
+const memberSinceFormatter = new Intl.DateTimeFormat("pt-BR", {
+  month: "short",
+  year: "numeric",
+});
+
 const dateTimeFormatter = new Intl.DateTimeFormat("pt-BR", {
   day: "2-digit",
   month: "2-digit",
@@ -11,6 +16,13 @@ const dateTimeFormatter = new Intl.DateTimeFormat("pt-BR", {
   hour: "2-digit",
   minute: "2-digit",
 });
+
+/** "Membro desde" style label, e.g. "Jul 2026". */
+export function formatMemberSince(d: Date): string {
+  const raw = memberSinceFormatter.format(d); // pt-BR gives "jul. de 2026"
+  const cleaned = raw.replace(/\./g, "").replace(/\bde\b/g, "").replace(/\s+/g, " ").trim();
+  return cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
+}
 
 export function formatDate(d: Date | null): string {
   return d ? dateFormatter.format(d) : "—";

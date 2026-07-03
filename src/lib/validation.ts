@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { CURRENCY_ORDER, Currency, STATUS_ORDER } from "./tokens";
+import { CURRENCY_ORDER, Currency, LANGUAGE_OPTIONS, Language, STATUS_ORDER } from "./tokens";
 
 export const jobSchema = z.object({
   company: z.string().min(1, "Empresa é obrigatória").max(120),
@@ -20,3 +20,12 @@ export const jobSchema = z.object({
 export type JobInput = z.infer<typeof jobSchema>;
 
 export const FREE_JOB_LIMIT = 15;
+
+const LANGUAGE_VALUES = LANGUAGE_OPTIONS.map((o) => o.value) as [Language, ...Language[]];
+
+export const profileSchema = z.object({
+  name: z.string().trim().min(1, "Nome é obrigatório").max(120, "Nome muito longo"),
+  language: z.enum(LANGUAGE_VALUES),
+});
+
+export type ProfileInput = z.infer<typeof profileSchema>;
