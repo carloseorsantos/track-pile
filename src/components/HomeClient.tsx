@@ -248,6 +248,7 @@ export function HomeClient({
                 {["Empresa / cargo", "Status", "Aplicado em", "Próxima data", "Fonte", ""].map((h, i) => (
                   <th
                     key={i}
+                    className={i >= 2 ? "tp-col-hide-mobile" : undefined}
                     style={{
                       textAlign: "left",
                       fontFamily: font.mono,
@@ -276,10 +277,10 @@ export function HomeClient({
                     <span style={{ display: "block", fontWeight: 400, color: "#666", fontSize: 12, marginTop: 2 }}>{j.role}</span>
                   </td>
                   <td style={tdStyle}><StatusBadge status={j.status} /></td>
-                  <td style={{ ...tdStyle, fontFamily: font.mono, fontWeight: 500, fontSize: 13 }}>{j.appliedAt || "—"}</td>
-                  <td style={{ ...tdStyle, fontFamily: font.mono, fontWeight: 500, fontSize: 13 }}>{j.nextDate || "—"}</td>
-                  <td style={tdStyle}>{j.source}</td>
-                  <td style={{ ...tdStyle, textAlign: "center", fontSize: 16 }}>↗</td>
+                  <td className="tp-col-hide-mobile" style={{ ...tdStyle, fontFamily: font.mono, fontWeight: 500, fontSize: 13 }}>{j.appliedAt || "—"}</td>
+                  <td className="tp-col-hide-mobile" style={{ ...tdStyle, fontFamily: font.mono, fontWeight: 500, fontSize: 13 }}>{j.nextDate || "—"}</td>
+                  <td className="tp-col-hide-mobile" style={tdStyle}>{j.source}</td>
+                  <td className="tp-col-hide-mobile" style={{ ...tdStyle, textAlign: "center", fontSize: 16 }}>↗</td>
                 </tr>
               ))}
             </tbody>

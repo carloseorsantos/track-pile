@@ -68,12 +68,9 @@ body {
     padding-bottom: 8px;
   }
 
-  /* Table: scroll horizontally instead of squeezing columns */
-  .tp-table-wrap {
-    overflow-x: auto !important;
-  }
-  .tp-table-wrap table {
-    min-width: 640px !important;
+  /* Table: drop to 2 columns (Empresa/cargo, Status) — fits without scroll */
+  .tp-col-hide-mobile {
+    display: none !important;
   }
 
   /* Public marketing nav: hide inline links, show hamburger */
