@@ -4,6 +4,7 @@ import { color, font, Language, shadow } from "@/lib/tokens";
 import { formatMemberSince } from "@/lib/dates";
 import { UpgradeButton } from "@/components/NavButtons";
 import { ProfileEditor } from "@/components/ProfileEditor";
+import { PlanBadge } from "@/components/ui";
 
 function initialsOf(name?: string | null) {
   if (!name) return "?";
@@ -60,22 +61,9 @@ export default async function ProfilePage() {
               {user.name}
             </h3>
             <div style={{ fontSize: 12, color: "#777", overflowWrap: "anywhere" }}>{user.email}</div>
-            <span
-              style={{
-                fontFamily: font.mono,
-                fontWeight: 500,
-                fontSize: 11,
-                padding: "4px 9px",
-                border: "2px solid #111",
-                boxShadow: shadow.badge,
-                background: color.gray,
-                color: color.ink,
-                display: "inline-block",
-                marginTop: 8,
-              }}
-            >
-              {isPro ? "Plano Pro" : "Plano grátis"}
-            </span>
+            <div style={{ marginTop: 8 }}>
+              <PlanBadge plan={user.plan ?? "FREE"} />
+            </div>
           </div>
         </div>
 

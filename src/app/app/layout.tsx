@@ -24,7 +24,7 @@ export default async function AppLayout({
   return (
     <AppShell
       userName={dbUser?.name ?? "Você"}
-      planLabel={plan === "PRO" ? "Plano Pro" : "Plano grátis"}
+      plan={plan}
       image={dbUser?.image}
     >
       {children}

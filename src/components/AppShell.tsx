@@ -4,7 +4,7 @@ import { CSSProperties, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { color, shadow } from "@/lib/tokens";
-import { Logo } from "./ui";
+import { Logo, PlanBadge } from "./ui";
 
 function initialsOf(name?: string | null) {
   if (!name) return "?";
@@ -15,12 +15,12 @@ function initialsOf(name?: string | null) {
 export function AppShell({
   children,
   userName,
-  planLabel,
+  plan,
   image,
 }: {
   children: React.ReactNode;
   userName: string;
-  planLabel: string;
+  plan: "FREE" | "PRO";
   image?: string | null;
 }) {
   const pathname = usePathname();
@@ -157,7 +157,9 @@ export function AppShell({
           </div>
           <div style={{ fontWeight: 700 }}>
             {userName}
-            <div style={{ fontSize: 12, color: "#777", fontWeight: 400 }}>{planLabel}</div>
+            <div style={{ marginTop: 4 }}>
+              <PlanBadge plan={plan} compact />
+            </div>
           </div>
         </div>
       </div>
