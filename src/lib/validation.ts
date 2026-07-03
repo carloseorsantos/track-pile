@@ -7,8 +7,8 @@ export const jobSchema = z.object({
   status: z.enum(STATUS_ORDER as [string, ...string[]]),
   source: z.enum(["LinkedIn", "Indicação", "Gupy", "Site da empresa", "Outro"]),
   link: z.string().url("Link inválido").or(z.literal("")).optional(),
-  appliedAt: z.string().max(40).optional(),
-  nextDate: z.string().max(40).optional(),
+  appliedAt: z.union([z.coerce.date(), z.null()]).optional(),
+  nextDate: z.union([z.coerce.date(), z.null()]).optional(),
   salary: z.string().max(60).optional(),
   notes: z.string().max(2000).optional(),
 });

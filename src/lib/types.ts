@@ -7,8 +7,8 @@ export type Job = {
   status: JobStatus;
   link: string | null;
   source: string;
-  appliedAt: string | null;
-  nextDate: string | null;
+  appliedAt: Date | null;
+  nextDate: Date | null;
   salary: string | null;
   notes: string | null;
 };

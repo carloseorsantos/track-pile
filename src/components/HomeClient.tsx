@@ -3,6 +3,7 @@
 import { useState, useTransition, CSSProperties } from "react";
 import { color, font, shadow, JobStatus, STATUS_ORDER } from "@/lib/tokens";
 import { Job } from "@/lib/types";
+import { formatDate, formatDateTime } from "@/lib/dates";
 import { Button, StatusBadge } from "./ui";
 import { Kanban } from "./Kanban";
 import { JobModal, JobFormValue } from "./JobModal";
@@ -154,8 +155,8 @@ export function HomeClient({
             </div>
 
             <div className="tp-detail2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18, margin: "26px 0" }}>
-              <DetailField label="Aplicado em" value={detail.appliedAt || "—"} />
-              <DetailField label="Próxima data" value={detail.nextDate || "—"} />
+              <DetailField label="Aplicado em" value={formatDate(detail.appliedAt)} />
+              <DetailField label="Próxima data" value={formatDateTime(detail.nextDate)} />
               <DetailField label="Fonte" value={detail.source} />
               <DetailField label="Faixa salarial" value={detail.salary || "—"} />
             </div>
@@ -277,8 +278,8 @@ export function HomeClient({
                     <span style={{ display: "block", fontWeight: 400, color: "#666", fontSize: 12, marginTop: 2 }}>{j.role}</span>
                   </td>
                   <td style={tdStyle}><StatusBadge status={j.status} /></td>
-                  <td className="tp-col-hide-mobile" style={{ ...tdStyle, fontFamily: font.mono, fontWeight: 500, fontSize: 13 }}>{j.appliedAt || "—"}</td>
-                  <td className="tp-col-hide-mobile" style={{ ...tdStyle, fontFamily: font.mono, fontWeight: 500, fontSize: 13 }}>{j.nextDate || "—"}</td>
+                  <td className="tp-col-hide-mobile" style={{ ...tdStyle, fontFamily: font.mono, fontWeight: 500, fontSize: 13 }}>{formatDate(j.appliedAt)}</td>
+                  <td className="tp-col-hide-mobile" style={{ ...tdStyle, fontFamily: font.mono, fontWeight: 500, fontSize: 13 }}>{formatDateTime(j.nextDate)}</td>
                   <td className="tp-col-hide-mobile" style={tdStyle}>{j.source}</td>
                   <td className="tp-col-hide-mobile" style={{ ...tdStyle, textAlign: "center", fontSize: 16 }}>↗</td>
                 </tr>

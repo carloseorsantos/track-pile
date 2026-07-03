@@ -76,8 +76,8 @@ model Job {
   status    String   @default("Salvo")
   link      String?
   source    String   @default("LinkedIn")
-  appliedAt String? // stored as display string "12/06" for MVP simplicity
-  nextDate  String? // "08/07 · 14h"
+  appliedAt DateTime?
+  nextDate  DateTime?
   salary    String?
   notes     String?
   createdAt DateTime @default(now())
