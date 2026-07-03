@@ -233,10 +233,10 @@ export function JobModal({
           </div>
 
           <div style={{ display: "flex", justifyContent: "flex-end", gap: 12, marginTop: 24 }}>
-            <Button variant="paper" onClick={onClose}>
+            <Button variant="paper" onClick={onClose} disabled={saving}>
               Cancelar
             </Button>
-            <Button variant="blue" onClick={() => onSave(form)}>
+            <Button variant="blue" onClick={() => onSave(form)} disabled={saving}>
               {saving ? "Salvando..." : initial ? "Salvar" : "Adicionar vaga"}
             </Button>
           </div>

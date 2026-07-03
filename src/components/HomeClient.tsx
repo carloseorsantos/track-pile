@@ -32,7 +32,7 @@ export function HomeClient({
   const [modalOpen, setModalOpen] = useState(false);
   const [editing, setEditing] = useState<Job | null>(null);
   const toast = useToast();
-  const [, startTransition] = useTransition();
+  const [isPending, startTransition] = useTransition();
 
   const counter = isPro ? `${jobs.length} vagas` : `${jobs.length} de ${FREE_JOB_LIMIT}`;
 
@@ -199,6 +199,7 @@ export function HomeClient({
               setEditing(null);
             }}
             onSave={handleSave}
+            saving={isPending}
           />
         )}
       </>
@@ -303,6 +304,7 @@ export function HomeClient({
             setEditing(null);
           }}
           onSave={handleSave}
+          saving={isPending}
         />
       )}
     </>
