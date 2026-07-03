@@ -318,7 +318,7 @@ export function HomeClient({
           <div style={{ fontFamily: font.mono, fontWeight: 500, fontSize: 12, color: "#999", marginBottom: 10 }}>
             {filteredJobs.length} de {jobs.length} vagas
           </div>
-          <div className="tp-table-wrap">
+          <div className="tp-table-wrap" style={{ maxHeight: "70vh", overflowY: "auto" }}>
           <table style={{ width: "100%", borderCollapse: "collapse", border: "3px solid #111", background: color.paper }}>
             <thead>
               <tr>
