@@ -68,12 +68,6 @@ enum Plan {
   PRO
 }
 
-enum Currency {
-  BRL
-  USD
-  EUR
-}
-
 model Job {
   id             String    @id @default(cuid())
   userId         String
@@ -85,7 +79,7 @@ model Job {
   appliedAt      DateTime?
   nextDate       DateTime?
   salary         String?
-  salaryCurrency Currency?
+  salaryCurrency String?
   notes          String?
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt

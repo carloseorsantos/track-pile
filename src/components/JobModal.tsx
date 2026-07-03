@@ -1,10 +1,10 @@
 "use client";
 
 import { CSSProperties, useState } from "react";
-import { color, Currency, CURRENCY_LABELS, CURRENCY_ORDER, font, shadow, STATUS_ORDER } from "@/lib/tokens";
+import { color, Currency, CURRENCY_ORDER, font, shadow, STATUS_ORDER } from "@/lib/tokens";
 import { Button } from "./ui";
 import { Job } from "@/lib/types";
-import { maskCurrencyInput } from "@/lib/currency";
+import { maskSalaryInput } from "@/lib/currency";
 import {
   fromDateInputValue,
   fromDateTimeInputValue,
@@ -202,14 +202,14 @@ export function JobModal({
                     setForm((f) => ({
                       ...f,
                       salaryCurrency: currency,
-                      salary: f.salary ? maskCurrencyInput(f.salary, currency) : f.salary,
+                      salary: f.salary ? maskSalaryInput(f.salary, currency) : f.salary,
                     }));
                   }}
-                  style={{ ...inputStyle, cursor: "pointer", flex: "0 0 140px" }}
+                  style={{ ...inputStyle, cursor: "pointer", flex: "0 0 90px" }}
                 >
                   {CURRENCY_ORDER.map((c) => (
                     <option key={c} value={c}>
-                      {CURRENCY_LABELS[c]}
+                      {c}
                     </option>
                   ))}
                 </select>
@@ -218,10 +218,10 @@ export function JobModal({
                   onChange={(e) =>
                     setForm((f) => ({
                       ...f,
-                      salary: maskCurrencyInput(e.target.value, f.salaryCurrency ?? "BRL"),
+                      salary: maskSalaryInput(e.target.value, f.salaryCurrency ?? "BRL"),
                     }))
                   }
-                  placeholder="R$ 8.000,00"
+                  placeholder="8.000,00"
                   style={{ ...inputStyle, flex: 1 }}
                 />
               </div>

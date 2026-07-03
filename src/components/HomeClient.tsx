@@ -4,6 +4,7 @@ import { useState, useTransition, CSSProperties } from "react";
 import { color, font, shadow, JobStatus } from "@/lib/tokens";
 import { Job } from "@/lib/types";
 import { formatDate, formatDateTime } from "@/lib/dates";
+import { formatSalaryDisplay } from "@/lib/currency";
 import { Button, StatusBadge } from "./ui";
 import { Kanban } from "./Kanban";
 import { JobModal, JobFormValue } from "./JobModal";
@@ -157,7 +158,7 @@ export function HomeClient({
               <DetailField label="Aplicado em" value={formatDate(detail.appliedAt)} />
               <DetailField label="Próxima data" value={formatDateTime(detail.nextDate)} />
               <DetailField label="Fonte" value={detail.source} />
-              <DetailField label="Faixa salarial" value={detail.salary || "—"} />
+              <DetailField label="Faixa salarial" value={formatSalaryDisplay(detail.salary, detail.salaryCurrency)} />
             </div>
 
             {detail.notes && (
