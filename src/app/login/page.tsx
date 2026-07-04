@@ -1,5 +1,6 @@
 import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 import { color, font, shadow } from "@/lib/tokens";
 import { Logo } from "@/components/ui";
 import { GoogleSignInButton } from "@/components/NavButtons";
@@ -47,7 +48,14 @@ export default async function LoginPage({
         </p>
         <GoogleSignInButton />
         <div style={{ marginTop: 20, fontSize: 12, color: "#777", fontFamily: font.mono }}>
-          AO ENTRAR VOCÊ ACEITA OS TERMOS DE USO
+          AO ENTRAR VOCÊ ACEITA OS{" "}
+          <Link href="/termos" style={{ color: "#777", textDecoration: "underline" }}>
+            TERMOS DE USO
+          </Link>{" "}
+          E A{" "}
+          <Link href="/privacidade" style={{ color: "#777", textDecoration: "underline" }}>
+            POLÍTICA DE PRIVACIDADE
+          </Link>
         </div>
       </div>
       <AuthErrorToast error={error} />

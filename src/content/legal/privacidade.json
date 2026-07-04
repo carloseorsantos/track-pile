@@ -1,0 +1,127 @@
+{
+  "title": "Política de Privacidade do Trackpile",
+  "updatedAt": "2026-07-04",
+  "sections": [
+    {
+      "heading": "1. Introdução",
+      "paragraphs": [
+        "Esta Política de Privacidade descreve como o Trackpile (\"Serviço\", \"nós\") coleta, utiliza, armazena, compartilha e protege os dados pessoais dos Usuários, em conformidade com a Lei nº 13.709/2018 (Lei Geral de Proteção de Dados Pessoais — \"LGPD\").",
+        "Esta Política complementa o Termo de Uso, disponível em /termos, e deve ser lida em conjunto com ele."
+      ]
+    },
+    {
+      "heading": "2. Identificação do Controlador",
+      "paragraphs": [
+        "O Controlador dos dados pessoais tratados pelo Trackpile é [NOME COMPLETO / RAZÃO SOCIAL], [CPF/CNPJ], com sede/domicílio em [ENDEREÇO].",
+        "Canal de contato para exercício de direitos e dúvidas sobre privacidade (Encarregado de Proteção de Dados / DPO): [E-MAIL DO ENCARREGADO DE DADOS]."
+      ]
+    },
+    {
+      "heading": "3. Dados Pessoais Coletados",
+      "paragraphs": [
+        "Coletamos as seguintes categorias de dados:"
+      ],
+      "items": [
+        "Dados de conta e autenticação: nome, endereço de e-mail, foto de perfil e identificador da Conta Google, recebidos do Google no momento do login (\"Entrar com Google\"); tokens de acesso, atualização e identificação OAuth (access_token, refresh_token, id_token) e tokens de sessão, necessários para manter você autenticado.",
+        "Preferências de conta: idioma preferido, plano contratado (Grátis ou Pro), data de criação da conta, preferência de recebimento de resumo semanal por e-mail e de lembretes de entrevista por e-mail.",
+        "Dados de candidaturas inseridos por você: nome da empresa, cargo, status da candidatura, link da vaga, origem da candidatura (ex. LinkedIn, indicação, Gupy, site da empresa), data de candidatura, data da próxima entrevista, faixa salarial e moeda informadas, e anotações em texto livre.",
+        "Histórico de status: registro interno de cada alteração de status de uma candidatura (status anterior, novo status e data/hora), utilizado como trilha de auditoria e como base para futuras funcionalidades de métricas (ex. tempo até entrevista, taxa de conversão), hoje não exibidas ao Usuário.",
+        "Dados técnicos de uso: informações padrão de sessão necessárias para o funcionamento do Serviço (cookie de sessão de autenticação)."
+      ]
+    },
+    {
+      "heading": "4. Dados que Não Coletamos",
+      "paragraphs": [
+        "O Trackpile não solicita nem armazena CPF, RG, endereço físico completo, dados bancários, dados de cartão de pagamento, dados biométricos, documentos ou fotos além da foto de perfil do Google, nem dados de geolocalização. O Serviço também não utiliza, no momento, ferramentas de analytics, pixels de rastreamento ou cookies de publicidade de terceiros — apenas o cookie estritamente necessário para manter sua sessão autenticada."
+      ]
+    },
+    {
+      "heading": "5. Finalidades e Bases Legais do Tratamento",
+      "paragraphs": [
+        "Tratamos seus dados pessoais com base nas seguintes hipóteses legais previstas no artigo 7º da LGPD:"
+      ],
+      "items": [
+        "Execução de contrato (art. 7º, V): para criar e manter sua conta, autenticá-lo via Google, disponibilizar as funcionalidades de tabela e Kanban, aplicar os limites e benefícios do seu plano, e permitir a exclusão de conta.",
+        "Legítimo interesse (art. 7º, IX): para manter o histórico de status das candidaturas como trilha de auditoria e para fins de segurança e prevenção a fraudes, sempre de forma proporcional e sem prejuízo aos seus direitos e liberdades fundamentais.",
+        "Consentimento (art. 7º, I): para o envio de e-mails opcionais, como o resumo semanal e os lembretes de entrevista, que você pode ativar ou desativar a qualquer momento na tela de Configurações.",
+        "Cumprimento de obrigação legal ou regulatória (art. 7º, II): quando aplicável, para atender a determinações de autoridades competentes."
+      ]
+    },
+    {
+      "heading": "6. Compartilhamento de Dados",
+      "paragraphs": [
+        "Não vendemos, alugamos ou comercializamos seus dados pessoais. Compartilhamos dados apenas nas seguintes situações:"
+      ],
+      "items": [
+        "Google LLC, na qualidade de provedor do serviço de autenticação (\"Entrar com Google\"), conforme os termos e políticas de privacidade do próprio Google, aplicáveis à sua Conta Google.",
+        "Provedores de infraestrutura de hospedagem, banco de dados e envio de e-mail transacional, contratados pelo Controlador como operadores de dados (art. 5º, VII, LGPD), que processam os dados exclusivamente para viabilizar o funcionamento técnico do Serviço, sob instruções do Controlador e obrigações contratuais de confidencialidade e segurança.",
+        "Autoridades públicas, quando exigido por lei, ordem judicial ou requisição de autoridade competente."
+      ]
+    },
+    {
+      "heading": "7. Transferência Internacional de Dados",
+      "paragraphs": [
+        "Alguns dos provedores de infraestrutura utilizados pelo Trackpile (hospedagem da aplicação e banco de dados) podem processar e armazenar dados em servidores localizados fora do Brasil. Nesses casos, o Controlador adota as salvaguardas exigidas pelo artigo 33 da LGPD, buscando contratar apenas provedores que ofereçam garantias adequadas de proteção de dados equivalentes às exigidas pela legislação brasileira."
+      ]
+    },
+    {
+      "heading": "8. Retenção e Eliminação de Dados",
+      "paragraphs": [
+        "Seus dados pessoais e dados de candidaturas são mantidos enquanto sua conta estiver ativa e for necessária para a prestação do Serviço.",
+        "Você pode excluir sua conta a qualquer momento, de forma self-service, na tela de Configurações (opção \"Excluir conta\"). Essa ação é irreversível e realiza a eliminação definitiva, em cascata, de todos os seus dados de candidaturas, histórico de status, sessões ativas e vínculo com sua Conta Google, ressalvadas informações que devam ser mantidas por obrigação legal, quando aplicável."
+      ]
+    },
+    {
+      "heading": "9. Direitos do Titular de Dados",
+      "paragraphs": [
+        "Nos termos do artigo 18 da LGPD, você tem direito a:"
+      ],
+      "items": [
+        "Confirmar a existência de tratamento de seus dados;",
+        "Acessar seus dados pessoais (a maior parte já é visível diretamente na tela de Perfil e nas suas candidaturas dentro do Serviço);",
+        "Corrigir dados incompletos, inexatos ou desatualizados (ex. nome de exibição, na tela de Perfil, ou os dados de cada candidatura);",
+        "Solicitar a anonimização, bloqueio ou eliminação de dados desnecessários, excessivos ou tratados em desconformidade com a LGPD, incluindo por meio da exclusão de conta self-service;",
+        "Solicitar a portabilidade de seus dados a outro fornecedor de serviço;",
+        "Obter informações sobre as entidades públicas e privadas com as quais o Controlador compartilhou seus dados;",
+        "Revogar o consentimento dado para finalidades específicas (ex. e-mails opcionais), a qualquer momento;",
+        "Opor-se a tratamento realizado com base em outra hipótese legal, quando entender que há descumprimento da LGPD."
+      ]
+    },
+    {
+      "heading": "10. Como Exercer Seus Direitos",
+      "paragraphs": [
+        "Diversos direitos podem ser exercidos diretamente no Serviço, nas telas de Perfil e Configurações. Para os demais pedidos, ou em caso de dúvidas, entre em contato pelo e-mail [E-MAIL DO ENCARREGADO DE DADOS]. Responderemos às solicitações dentro dos prazos estabelecidos pela LGPD."
+      ]
+    },
+    {
+      "heading": "11. Segurança da Informação",
+      "paragraphs": [
+        "Adotamos medidas técnicas e organizacionais razoáveis para proteger seus dados pessoais contra acessos não autorizados, perda, alteração ou destruição, incluindo controle de acesso restrito por conta (\"userId\"), autenticação via Google (sem armazenamento de senhas próprias pelo Trackpile) e uso de conexões criptografadas. Nenhum sistema, no entanto, é absolutamente livre de riscos, e nos comprometemos a notificar os Usuários e a Autoridade Nacional de Proteção de Dados (ANPD) em caso de incidente de segurança que possa acarretar risco ou dano relevante, nos termos da LGPD."
+      ]
+    },
+    {
+      "heading": "12. Cookies",
+      "paragraphs": [
+        "O Trackpile utiliza apenas o cookie estritamente necessário ao funcionamento do Serviço, responsável por manter sua sessão autenticada após o login com o Google. Não utilizamos cookies de publicidade, rastreamento entre sites ou ferramentas de analytics de terceiros no momento. Caso isso venha a mudar no futuro, esta Política será atualizada e, quando exigido, solicitaremos seu consentimento previamente."
+      ]
+    },
+    {
+      "heading": "13. Crianças e Adolescentes",
+      "paragraphs": [
+        "O Trackpile não é direcionado a crianças e não coleta intencionalmente dados de menores de 12 anos. Menores de 18 e maiores de 16 anos devem utilizar o Serviço apenas com autorização de um responsável legal, conforme detalhado no Termo de Uso."
+      ]
+    },
+    {
+      "heading": "14. Alterações desta Política",
+      "paragraphs": [
+        "Esta Política poderá ser atualizada periodicamente. A versão vigente estará sempre disponível em /privacidade, com indicação da data de última atualização. Alterações relevantes serão comunicadas por e-mail ou por aviso no próprio Serviço."
+      ]
+    },
+    {
+      "heading": "15. Contato",
+      "paragraphs": [
+        "Para exercer seus direitos como titular de dados ou esclarecer dúvidas sobre esta Política, entre em contato pelo e-mail [E-MAIL DO ENCARREGADO DE DADOS]."
+      ]
+    }
+  ]
+}

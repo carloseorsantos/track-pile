@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate",
-    "db:push": "prisma db push"
+    "db:push": "prisma db push",
+    "generate:legal-pdfs": "node scripts/generate-legal-pdfs.cjs"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.7.4",
