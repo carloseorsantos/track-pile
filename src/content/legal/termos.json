@@ -1,0 +1,107 @@
+{
+  "title": "Termo de Uso do Trackpile",
+  "updatedAt": "2026-07-04",
+  "sections": [
+    {
+      "heading": "1. Aceitação do Termo",
+      "paragraphs": [
+        "Este Termo de Uso (\"Termo\") regula a utilização do Trackpile (\"Serviço\", \"Trackpile\", \"nós\"), uma aplicação para organização pessoal de candidaturas de emprego, disponibilizada em [DOMÍNIO DO SITE]. Ao criar uma conta ou utilizar o Serviço de qualquer forma, você (\"Usuário\", \"você\") declara que leu, compreendeu e concorda integralmente com este Termo e com a Política de Privacidade, disponível em /privacidade.",
+        "Se você não concorda com qualquer disposição deste Termo, não deverá criar conta nem utilizar o Serviço."
+      ]
+    },
+    {
+      "heading": "2. Identificação do Responsável",
+      "paragraphs": [
+        "O Trackpile é oferecido por [NOME COMPLETO / RAZÃO SOCIAL], [CPF/CNPJ], com sede/domicílio em [ENDEREÇO], doravante designado \"Controlador\" ou \"Responsável pelo Serviço\". Dúvidas, solicitações ou reclamações relacionadas a este Termo podem ser enviadas para [E-MAIL DE CONTATO]."
+      ]
+    },
+    {
+      "heading": "3. Descrição do Serviço",
+      "paragraphs": [
+        "O Trackpile é uma ferramenta pessoal de organização de processos seletivos de emprego. Por meio dela, o Usuário pode registrar vagas às quais se candidatou, acompanhar o status de cada candidatura (Salvo, Aplicado, Triagem RH, Entrevista técnica, Entrevista final, Oferta ou Rejeitado) em visualizações de tabela e quadro Kanban, e anotar informações como empresa, cargo, link da vaga, origem da candidatura, datas de aplicação e de entrevista, faixa salarial e observações livres.",
+        "O Serviço não é uma plataforma de recrutamento, não intermedia contratações, não publica vagas de terceiros e não permite qualquer interação entre diferentes contas de Usuários. Cada Usuário só acessa e gerencia os dados de suas próprias candidaturas."
+      ]
+    },
+    {
+      "heading": "4. Elegibilidade e Idade Mínima",
+      "paragraphs": [
+        "O uso do Trackpile é destinado a pessoas com 18 (dezoito) anos ou mais. Menores de 18 e maiores de 16 anos poderão utilizar o Serviço apenas com autorização e supervisão de um responsável legal, nos termos da legislação civil brasileira. O Trackpile não coleta intencionalmente dados de crianças (menores de 12 anos) e, caso identifique conta criada por criança, procederá ao cancelamento e à eliminação dos dados correspondentes."
+      ]
+    },
+    {
+      "heading": "5. Criação de Conta e Autenticação",
+      "paragraphs": [
+        "O acesso ao Serviço é realizado exclusivamente por meio de autenticação com sua Conta Google (\"Entrar com Google\"). Não há criação de senha própria no Trackpile. Ao autenticar-se, o Trackpile recebe do Google seu nome, endereço de e-mail e foto de perfil, conforme detalhado na Política de Privacidade.",
+        "Você é responsável por manter a segurança de sua Conta Google e por todas as atividades realizadas em sua conta do Trackpile. Caso identifique uso não autorizado, deverá revogar o acesso do Trackpile em sua Conta Google e comunicar o Controlador imediatamente."
+      ]
+    },
+    {
+      "heading": "6. Planos, Limites de Uso e Cobrança",
+      "paragraphs": [
+        "O Trackpile oferece um plano Grátis e um plano Pro. O plano Grátis permite o cadastro de até 15 (quinze) vagas ativas simultaneamente, com visualizações de tabela e Kanban. O plano Pro remove esse limite e adiciona funcionalidades como visualização de calendário e lembretes de entrevista por e-mail.",
+        "Atualmente, todo novo Usuário inicia no plano Grátis e nenhuma cobrança é processada pelo Trackpile, pois a integração de pagamentos (via Stripe) ainda está em desenvolvimento. Quando a cobrança do plano Pro for disponibilizada, este Termo será atualizado com as condições de preço, forma de pagamento, renovação, cancelamento e reembolso, e a nova versão será comunicada aos Usuários antes de qualquer cobrança.",
+        "O Controlador reserva-se o direito de alterar limites, funcionalidades e a composição dos planos Grátis e Pro, mediante comunicação prévia razoável aos Usuários afetados."
+      ]
+    },
+    {
+      "heading": "7. Conteúdo Inserido pelo Usuário",
+      "paragraphs": [
+        "Você é o único responsável pelas informações que insere no Trackpile, incluindo nomes de empresas, cargos, links de vagas, datas, valores de remuneração e anotações em texto livre.",
+        "O campo de observações permite texto livre e pode, a critério do Usuário, conter dados pessoais de terceiros (por exemplo, nome de um recrutador ou entrevistador). Ao inserir esse tipo de informação, você declara que possui base legal e legitimidade para fazê-lo, e concorda em utilizar o campo de forma proporcional e compatível com a finalidade de organizar sua própria busca de emprego, evitando a inserção de dados sensíveis (como origem racial, saúde, orientação sexual, convicção religiosa ou política) de si mesmo ou de terceiros.",
+        "É vedado utilizar o Serviço para inserir conteúdo ilícito, ofensivo, difamatório, que viole direitos de propriedade intelectual ou de personalidade de terceiros, ou que infrinja a legislação aplicável."
+      ]
+    },
+    {
+      "heading": "8. Uso Aceitável",
+      "paragraphs": [
+        "Ao utilizar o Trackpile, você concorda em não: (i) tentar acessar contas ou dados de outros Usuários; (ii) realizar engenharia reversa, copiar ou explorar comercialmente o software do Serviço sem autorização; (iii) utilizar robôs, scraping ou automações para sobrecarregar ou extrair dados do Serviço em escala; (iv) tentar contornar limites técnicos de uso do plano Grátis; (v) utilizar o Serviço para qualquer finalidade ilegal."
+      ]
+    },
+    {
+      "heading": "9. Propriedade Intelectual",
+      "paragraphs": [
+        "O software, a marca \"Trackpile\", o layout, os elementos visuais e demais componentes do Serviço são de titularidade do Controlador ou de seus licenciantes, protegidos pela legislação de propriedade intelectual aplicável. Este Termo não transfere ao Usuário qualquer direito de propriedade intelectual sobre o Serviço, exceto a licença limitada, pessoal, revogável e não exclusiva de uso do Trackpile conforme aqui descrito.",
+        "Os dados que você insere sobre suas próprias candidaturas (informações de vagas, notas, datas) permanecem de sua titularidade. O Controlador não reivindica propriedade sobre esse conteúdo, utilizando-o apenas para operar o Serviço em seu benefício, nos termos da Política de Privacidade."
+      ]
+    },
+    {
+      "heading": "10. Disponibilidade do Serviço e Isenções",
+      "paragraphs": [
+        "O Trackpile é fornecido \"no estado em que se encontra\" (\"as is\"), sem garantias de disponibilidade ininterrupta, ausência de erros ou adequação a uma finalidade específica. O Controlador envidará esforços razoáveis para manter o Serviço disponível e seguro, mas não garante que a operação será livre de interrupções, falhas ou perda de dados, especialmente durante manutenções, atualizações ou eventos fora de seu controle razoável.",
+        "Recomenda-se que o Usuário não utilize o Trackpile como único repositório de informações críticas para sua busca de emprego, mantendo registros próprios adicionais quando julgar necessário."
+      ]
+    },
+    {
+      "heading": "11. Limitação de Responsabilidade",
+      "paragraphs": [
+        "Na máxima extensão permitida pela legislação aplicável, o Controlador não será responsável por danos indiretos, lucros cessantes, perda de oportunidades de emprego ou danos decorrentes de decisões tomadas pelo Usuário com base nas informações organizadas no Serviço.",
+        "O Trackpile não participa, influencia ou garante o resultado de qualquer processo seletivo registrado pelo Usuário; sua função é meramente organizacional."
+      ]
+    },
+    {
+      "heading": "12. Suspensão e Encerramento",
+      "paragraphs": [
+        "O Usuário pode encerrar sua conta a qualquer momento, de forma self-service, na tela de Configurações do Serviço (opção \"Excluir conta\"), o que resulta na exclusão definitiva e em cascata de seus dados de candidaturas, histórico de status, sessões e vínculo com a Conta Google, conforme detalhado na Política de Privacidade.",
+        "O Controlador poderá suspender ou encerrar o acesso de um Usuário que violar este Termo, mediante comunicação prévia sempre que razoavelmente possível, ressalvados os casos de violação grave ou risco à segurança do Serviço ou de terceiros, hipóteses em que a suspensão poderá ser imediata."
+      ]
+    },
+    {
+      "heading": "13. Alterações deste Termo",
+      "paragraphs": [
+        "Este Termo poderá ser atualizado periodicamente para refletir mudanças no Serviço, na legislação ou nas práticas do Controlador. A versão vigente estará sempre disponível em /termos, com indicação da data de última atualização. Alterações relevantes serão comunicadas por e-mail ou por aviso no próprio Serviço, com antecedência razoável antes de sua entrada em vigor."
+      ]
+    },
+    {
+      "heading": "14. Lei Aplicável e Foro",
+      "paragraphs": [
+        "Este Termo é regido pelas leis da República Federativa do Brasil, em especial pela Lei nº 13.709/2018 (Lei Geral de Proteção de Dados Pessoais) e pela Lei nº 12.965/2014 (Marco Civil da Internet). Fica eleito o foro do domicílio do Usuário, quando este for consumidor, ou o foro de [COMARCA/CIDADE], nos demais casos, para dirimir eventuais controvérsias, com renúncia a qualquer outro, por mais privilegiado que seja."
+      ]
+    },
+    {
+      "heading": "15. Contato",
+      "paragraphs": [
+        "Dúvidas sobre este Termo podem ser enviadas para [E-MAIL DE CONTATO]."
+      ]
+    }
+  ]
+}
