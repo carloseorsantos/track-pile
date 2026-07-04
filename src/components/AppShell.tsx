@@ -12,6 +12,16 @@ function initialsOf(name?: string | null) {
   return (parts[0][0] + (parts[1]?.[0] ?? "")).toUpperCase();
 }
 
+// Encurta o nome para caber na sidebar: nome+sobrenome > nome > reticências (CSS).
+function displayName(name?: string | null) {
+  if (!name) return "";
+  const parts = name.trim().split(/\s+/).filter(Boolean);
+  if (parts.length <= 1) return parts[0] ?? "";
+  const firstLast = `${parts[0]} ${parts[parts.length - 1]}`;
+  if (firstLast.length <= 18) return firstLast;
+  return parts[0];
+}
+
 export function AppShell({
   children,
   userName,
@@ -155,8 +165,13 @@ export function AppShell({
           >
             {!image && initialsOf(userName)}
           </div>
-          <div style={{ fontWeight: 700 }}>
-            {userName}
+          <div style={{ fontWeight: 700, minWidth: 0 }}>
+            <div
+              title={userName}
+              style={{ maxWidth: 140, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}
+            >
+              {displayName(userName)}
+            </div>
             <div style={{ marginTop: 4 }}>
               <PlanBadge plan={plan} compact />
             </div>
